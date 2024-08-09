@@ -10,24 +10,73 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "phonebook.hpp"
 
-void	prompt_welcome()
-{
-	std::cout<<"****************************\n"
-			   "*   welcome in phonebook   *\n"
-			   "****************************\n"<<std::endl;
+Phonebook::Phonebook() {
+		Phonebook::index = 1;
+	}
+
+Phonebook::~Phonebook() {
+
 }
 
-void	prompt_action()
+void	Phonebook::prompt_welcome()
 {
-	std::cout<<"****************************\n"
-			   "*    ADD = add contact     *\n"
-			   "* SEARCH = print a contact *\n"
-			   "*   EXIT = Exit phonebook  *\n"
-			   "****************************\n";
+	std::cout << "****************************\n"
+			     "*   Welcome in phonebook   *\n"
+			     "****************************\n"<<std::endl;
 }
+
+void	Phonebook::prompt_action() {
+	std::cout << "****************************\n"
+			     "*    ADD = add contact     *\n"
+			     "* SEARCH = print a contact *\n"
+			     "*   EXIT = Exit phonebook  *\n"
+			     "****************************\n";
+}
+
+void Phonebook::add_contact() {
+	Phonebook::contact[Phonebook::index].init_all();
+	++Phonebook::index;
+	if (Phonebook::index == 8)
+		Phonebook::index = 0;
+}
+
+static void	print_test(std::string tmp) {
+	std::cout<<tmp;
+}
+
+void Phonebook::print_contact() {
+	int y = 0;
+
+	for (int i = 0; i < 30; i++)
+		std::cout << "*";
+	std::cout << "\n";
+	while (y < 8 && Phonebook::contact[y].is_exist()) {
+		Phonebook::contact[y].print_all();
+		std::cout << "\n" << toascii(y) << std::endl;
+		y++;
+	}
+	std::cout << "\n";
+	for (int i = 0; i < 30; i++)
+		std::cout << "*";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int	ft_action(std::string line)
 {
@@ -47,12 +96,14 @@ int main()
 {
 	int 		i = -1;
 	std::string line;
-
-	prompt_welcome();
-	prompt_action();
-	while (i == -1) {
-		std::cout<<"> ";
-		std::cin >> line;
-		i = ft_action(line);
-	}
+	Phonebook test;
+	test.prompt_welcome();
+	test.prompt_action();
+//	while (i == -1) {
+//		std::cout<<"> ";
+//		std::cin >> line;
+//		i = ft_action(line);
+//	}
+//	test.add_contact();
+	test.print_contact();
 }
