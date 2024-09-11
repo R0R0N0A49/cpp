@@ -97,20 +97,3 @@ void Phonebook::search_contacts()
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
