@@ -9,14 +9,15 @@ class Phonebook
 		~Phonebook(void);
 
 	public:
+		void	search_contacts();
 		void	prompt_welcome();
 		void	prompt_action();
 		void	add_contact();
-		void	print_contact();
 
 	private:
 		int index;
 		Contact contact[8];
+		void	print_contact();
 };
 
 # endif

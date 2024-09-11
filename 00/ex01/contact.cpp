@@ -13,11 +13,11 @@
 #include "contact.hpp"
 
 Contact::Contact() {
-	Contact::first = "toma";
-	Contact::last = "toma";
-	Contact::nick = "toto";
-	Contact::number = "0784261548";
-	Contact::secret = "jsp";
+	// Contact::first = "toma";
+	// Contact::last = "toma";
+	// Contact::nick = "toto";
+	// Contact::number = "0784261548";
+	// Contact::secret = "jsp";
 }
 
 Contact::~Contact() {
@@ -26,9 +26,9 @@ Contact::~Contact() {
 
 void Contact::init_first() {
 	while (1) {
-		std::cout << "First Name : ";
-		std::getline(std::cin,  Contact::first);
-		if (Contact::first.length()) {
+		std::cout << BLUE << "First Name : " << WHITE;
+		std::getline(std::cin, Contact::first);
+		if (!Contact::first.empty()) {
 			return ;
 		}
 		std::cout << RED << "First Name can't be NULL\n\033[1;m" << WHITE;
@@ -37,9 +37,9 @@ void Contact::init_first() {
 
 void Contact::init_last() {
 	while (1) {
-		std::cout << "Last Name : ";
+		std::cout << BLUE << "Last Name : " << WHITE;
 		std::getline(std::cin,  Contact::last);
-		if (Contact::last.length()) {
+		if (!Contact::last.empty()) {
 			return ;
 		}
 		std::cout << RED << "Last Name can't be NULL\n" << WHITE;
@@ -48,9 +48,9 @@ void Contact::init_last() {
 
 void Contact::init_nick() {
 	while (1) {
-		std::cout << "NickName : ";
+		std::cout << BLUE << "NickName : " << WHITE;
 		std::getline(std::cin,  Contact::nick);
-		if (Contact::nick.length()) {
+		if (!Contact::nick.empty()) {
 			return ;
 		}
 		std::cout << RED << "Nickname can't be NULL\n" << WHITE;
@@ -61,7 +61,7 @@ void Contact::init_number() {
 	int i = 0;
 
 	while (1) {
-		std::cout << "number : ";
+		std::cout << BLUE << "number : " << WHITE;
 		std::getline(std::cin,  Contact::number);
 		if (Contact::number.length() == 10) {
 			while (isdigit(Contact::number[i]))
@@ -78,9 +78,9 @@ void Contact::init_number() {
 
 void Contact::init_secret() {
 	while (1) {
-		std::cout << "darkest secret : ";
+		std::cout << BLUE << "darkest secret : " << WHITE;
 		std::getline(std::cin,  Contact::secret);
-		if (Contact::secret.length()) {
+		if (!Contact::secret.empty()) {
 			return ;
 		}
 		std::cout << RED << "Last Name can't be NULL\033[1;m\n";
@@ -95,38 +95,54 @@ void Contact::init_all() {
 	Contact::init_secret();
 }
 
-static std::string	ft_cute(std::string tmp) {
-	if (tmp.length() == 10)
-		return (tmp);
-	if (tmp.length() > 10) {
-		tmp.resize(9);
-		tmp += '.';
-	} else {
-		for (int i = tmp.length();i < 10; i++)
-			tmp += ' ';
-	}
-}
-
 std::string	Contact::get_first() {
 	return first;
 }
 
-void	Contact::print_all() {
+void loop_print_name(std::string name)
+{
 	std::string tmp;
 
-	std::cout << "*";
-	if (Contact::first.length() > 10) {
-		tmp = Contact::first;
+	if (name.length() > 10) {
+		tmp = name;
 		tmp.resize(9);
 		std::cout << tmp << '.';
 	}
-	if (Contact::first.length() == 10)
-		std::cout << Contact::first;
+	else if (name.length() == 10)
+		std::cout << name;
 	else {
-		for (int i = Contact::first.length(); i < 10 ; i++)
+		for (int i = name.length(); i < 10 ; i++)
 			std::cout << " ";
-		std::cout << Contact::first;
+		std::cout << name;
 	}
+}
+
+void	Contact::print_name() {
+	std::cout << CYAN << "|" << WHITE;
+	loop_print_name(Contact::first);
+	std::cout << CYAN << "|" << WHITE;
+	loop_print_name(Contact::last);
+	std::cout << CYAN << "|" << WHITE;
+	loop_print_name(Contact::nick);
+	std::cout << CYAN << "|";
+	std::cout << "\n|-----|----------|----------|----------|" << WHITE;
+}
+
+void	Contact::print_all()
+{
+	system("clear");
+	if (!is_exist())
+	{
+		std::cout << GREEN << "\n****************************\n"
+								"*   CONTACT DOES\'T EXIST   *\n"
+								"****************************\n" << WHITE << std::endl;
+		return ;
+	}
+	std::cout << GREEN << "\nfirst name     : " << WHITE << Contact::first << std::endl;
+	std::cout << GREEN << "last name      : " << WHITE << Contact::last << std::endl;
+	std::cout << GREEN << "nickname       : " << WHITE << Contact::nick << std::endl;
+	std::cout << GREEN << "phone number   : " << WHITE << Contact::number << std::endl;
+	std::cout << GREEN << "darkest secret : "  << WHITE << Contact::secret << std::endl << std::endl;
 }
 
 int	Contact::is_exist() {

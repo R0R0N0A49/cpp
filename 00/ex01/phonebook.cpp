@@ -13,7 +13,7 @@
 #include "phonebook.hpp"
 
 Phonebook::Phonebook() {
-		Phonebook::index = 1;
+		Phonebook::index = 0;
 	}
 
 Phonebook::~Phonebook() {
@@ -22,17 +22,17 @@ Phonebook::~Phonebook() {
 
 void	Phonebook::prompt_welcome()
 {
-	std::cout << "****************************\n"
+	std::cout << GREEN <<  "****************************\n"
 			     "*   Welcome in phonebook   *\n"
-			     "****************************\n"<<std::endl;
+			     "****************************\n" << WHITE << std::endl;
 }
 
 void	Phonebook::prompt_action() {
-	std::cout << "****************************\n"
+	std::cout << BLUE <<  "****************************\n"
 			     "*    ADD = add contact     *\n"
 			     "* SEARCH = print a contact *\n"
 			     "*   EXIT = Exit phonebook  *\n"
-			     "****************************\n";
+			     "****************************\n" << WHITE;
 }
 
 void Phonebook::add_contact() {
@@ -49,61 +49,68 @@ static void	print_test(std::string tmp) {
 void Phonebook::print_contact() {
 	int y = 0;
 
-	for (int i = 0; i < 30; i++)
-		std::cout << "*";
-	std::cout << "\n";
-	while (y < 8 && Phonebook::contact[y].is_exist()) {
-		Phonebook::contact[y].print_all();
-		std::cout << "\n" << toascii(y) << std::endl;
+	std::cout << CYAN << "|-----|----------|----------|----------|\n";
+	std::cout << CYAN << "|" << CYAN_2 << "index" << CYAN << "|" << CYAN_2"first Name" << CYAN "|" << CYAN_2" last Name";
+	std::cout << CYAN << "|" << CYAN_2 <<"  Nickname" << CYAN <<"|\n";
+	std::cout << CYAN << "|-----|----------|----------|----------|\n" << WHITE;
+	// && Phonebook::contact[y].is_exist()
+	while (y < 8) {
+		std::cout << CYAN << "|  " << CYAN_2 << y + 1 << CYAN_2 << "  ";
+		Phonebook::contact[y].print_name();
+		std::cout << "\n";
 		y++;
 	}
 	std::cout << "\n";
-	for (int i = 0; i < 30; i++)
-		std::cout << "*";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int	ft_action(std::string line)
+void Phonebook::search_contacts()
 {
-	if (line.length() == 0)
-		return (1);
-	if (!line.compare("ADD"))
-		std::cout<<"ADD"<<std::endl;
-	else if (!line.compare("EXIT")) {
-		std::cout << "exit" << std::endl;
-		return (0);
-	} else
-		std::cout<<"Error input"<<std::endl;
-	return (-1);
-}
-
-int main()
-{
-	int 		i = -1;
 	std::string line;
-	Phonebook test;
-	test.prompt_welcome();
-	test.prompt_action();
-//	while (i == -1) {
-//		std::cout<<"> ";
-//		std::cin >> line;
-//		i = ft_action(line);
-//	}
-//	test.add_contact();
-	test.print_contact();
+	int i = 0;
+
+	Phonebook::print_contact();
+	while (1)
+	{
+		std::cout << CYAN << "Index : " << WHITE;
+		std::getline(std::cin, line);
+		for (int j = 0; line[j]; j++)
+		{
+			if (!isdigit(line[j]))
+			{
+				std::cout << RED << "Index must be a number\n" << WHITE;
+				break ;
+			}
+				i++;
+		}
+		if (i == line.length())
+		{
+			std::stringstream ss(line);
+			int index;
+			ss >> index;
+			if (index <= 8 && index >= 1)
+			{
+				Phonebook::contact[index - 1].print_all();
+				break ;
+			}
+			std::cout << RED << "Index must be Between 1 and 8\n" << WHITE;
+		}
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
