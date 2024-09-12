@@ -1,4 +1,4 @@
-NAME = phonebook
+NAME = brain
 SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
