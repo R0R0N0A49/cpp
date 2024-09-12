@@ -95,7 +95,8 @@ void Phonebook::search_contacts()
 	while (1)
 	{
 		i = 0;
-		std::cout << BLUE << "Whose information do you want to see?" << CYAN << "\nIndex : " << WHITE;
+		std::cout << BLUE << "Whose information do you want to see?";
+		std::cout << CYAN << "\nIndex : " << WHITE;
 		std::getline(std::cin, line);
 		system("clear");
 		print_msg("SEARCH CONTACT");
