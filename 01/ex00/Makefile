@@ -19,7 +19,7 @@ $(NAME) : $(OBJS)
 		echo ${GREEN}"Compilation successful!"${WHITE}; \
 	fi
 %.o: %.c
-	$(CPP) $(CFLAGS) -c $< -o $@
+	@$(CPP) $(CFLAGS) -c $< -o $@
 clean:
 	@clear
 	@$(RM) $(OBJS)
