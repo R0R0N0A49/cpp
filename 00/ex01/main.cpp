@@ -5,31 +5,32 @@ int	ft_action(std::string line, Phonebook &test)
 	if (!line.compare("ADD"))
 	{
 		system("clear");
-		std::cout << GREEN <<	"\n****************************\n"
-								"*       ADD  CONTACT       *\n"
-								"****************************\n" << WHITE << std::endl;
+		test.print_msg("ADD  CONTACT");
+//		std::cout << GREEN <<	"\n****************************\n"
+//								"*       ADD  CONTACT       *\n"
+//								"****************************\n" << WHITE << std::endl;
 		test.add_contact();
 		system("clear");
-		std::cout << GREEN <<	"\n****************************\n"
-								"*       CONTACT ADDED      *\n"
-								"****************************\n" << WHITE << std::endl;
+		test.print_msg("CONTACT  ADDED");
+//        std::cout << GREEN <<	"\n****************************\n"
+//								"*       CONTACT ADDED      *\n"
+//								"****************************\n" << WHITE << std::endl;
 	} else if (!line.compare("SEARCH")) {
 		system("clear");
-		std::cout << GREEN <<	"\n****************************\n"
-								"*      SEARCH CONTACT      *\n"
-								"****************************\n" << WHITE << std::endl;
 		test.search_contacts();
 	} else if (!line.compare("EXIT")) {
 		system("clear");
-		std::cout << GREEN <<	"\n****************************\n"
-								"*      Exit Phonebook      *\n"
-								"****************************\n" << WHITE << std::endl;
+		test.print_msg("Exit Phonebook");
+//        std::cout << GREEN <<	"\n****************************\n"
+//								"*      Exit Phonebook      *\n"
+//								"****************************\n" << WHITE << std::endl;
 		return (0);
 	} else {
 		system("clear");
-		std::cout << GREEN << "\n****************************\n"
-								"*       Imput  Error       *\n"
-								"****************************\n" << WHITE << std::endl;
+		test.print_msg("Imput  Error");
+//		std::cout << GREEN << "\n****************************\n"
+//								"*       Imput  Error       *\n"
+//								"****************************\n" << WHITE << std::endl;
 	}
 	return (-1);
 }

@@ -13,10 +13,11 @@ class Phonebook
 		void	prompt_welcome();
 		void	prompt_action();
 		void	add_contact();
+		void	print_msg(std::string msg);
 
 	private:
 		int index;
-		Contact contact[8];
+		Contact contact[NMB_CONTACTS];
 		void	print_contact();
 };
 

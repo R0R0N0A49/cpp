@@ -12,12 +12,17 @@
 
 #include "contact.hpp"
 
+void Contact::ft_get_line(std::string &str)
+{
+	int	i;
+
+	std::getline(std::cin,  str);
+	for (i = 0; str[i] == 32 || str[i] == '\t'; i++)
+		;
+	str = &str[i];
+}
+
 Contact::Contact() {
-	// Contact::first = "toma";
-	// Contact::last = "toma";
-	// Contact::nick = "toto";
-	// Contact::number = "0784261548";
-	// Contact::secret = "jsp";
 }
 
 Contact::~Contact() {
@@ -27,7 +32,7 @@ Contact::~Contact() {
 void Contact::init_first() {
 	while (1) {
 		std::cout << BLUE << "First Name : " << WHITE;
-		std::getline(std::cin, Contact::first);
+		ft_get_line(Contact::first);
 		if (!Contact::first.empty()) {
 			return ;
 		}
@@ -38,7 +43,7 @@ void Contact::init_first() {
 void Contact::init_last() {
 	while (1) {
 		std::cout << BLUE << "Last Name : " << WHITE;
-		std::getline(std::cin,  Contact::last);
+		ft_get_line(Contact::last);
 		if (!Contact::last.empty()) {
 			return ;
 		}
@@ -49,7 +54,7 @@ void Contact::init_last() {
 void Contact::init_nick() {
 	while (1) {
 		std::cout << BLUE << "NickName : " << WHITE;
-		std::getline(std::cin,  Contact::nick);
+		ft_get_line(Contact::nick);
 		if (!Contact::nick.empty()) {
 			return ;
 		}
@@ -62,7 +67,7 @@ void Contact::init_number() {
 
 	while (1) {
 		std::cout << BLUE << "number : " << WHITE;
-		std::getline(std::cin,  Contact::number);
+		ft_get_line(Contact::number);
 		if (Contact::number.length() == 10) {
 			while (isdigit(Contact::number[i]))
 				i++;
@@ -79,7 +84,7 @@ void Contact::init_number() {
 void Contact::init_secret() {
 	while (1) {
 		std::cout << BLUE << "darkest secret : " << WHITE;
-		std::getline(std::cin,  Contact::secret);
+		ft_get_line(Contact::secret);
 		if (!Contact::secret.empty()) {
 			return ;
 		}
@@ -131,13 +136,6 @@ void	Contact::print_name() {
 void	Contact::print_all()
 {
 	system("clear");
-	if (!is_exist())
-	{
-		std::cout << GREEN << "\n****************************\n"
-								"*   CONTACT DOES\'T EXIST   *\n"
-								"****************************\n" << WHITE << std::endl;
-		return ;
-	}
 	std::cout << GREEN << "\nfirst name     : " << WHITE << Contact::first << std::endl;
 	std::cout << GREEN << "last name      : " << WHITE << Contact::last << std::endl;
 	std::cout << GREEN << "nickname       : " << WHITE << Contact::nick << std::endl;
