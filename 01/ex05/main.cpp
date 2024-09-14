@@ -16,10 +16,12 @@ int main()
 {
 	Harl h = Harl();
 
-	std::cout << "Warning :\n";
-	h.complain("WARNING");
+	std::cout << "[ Warning ]\n";
 	h.complain("DEBUG");
+	std::cout << "\n[ Info ]\n";
 	h.complain("INFO");
+	std::cout << "\n[ Warning ]\n";
 	h.complain("WARNING");
+	std::cout << "\n[ Error ]\n";
 	h.complain("ERROR");
 }
