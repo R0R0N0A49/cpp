@@ -1,5 +1,5 @@
-NAME = LineSwap
-SRCS = main.cpp LineSwap.cpp
+NAME = Harl
+SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 CPP = c++
