@@ -16,7 +16,13 @@ Fixed::~Fixed()
 {
 }
 
+Fixed& Fixed::operator=(const Fixed& other)
+{
+	Fixed::rawbits = other.rawbits;
+	return *this;
+}
+
 int Fixed::getRawBits() const
 {
-
+	return (rawbits);
 }
