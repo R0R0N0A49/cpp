@@ -1,4 +1,4 @@
-NAME = Fixed_0
+NAME = Fixed
 SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
@@ -13,7 +13,7 @@ WHITE='\033[0;m'
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@clear
+	@#clear
 	@$(CPP) $(CFLAGS) $(OBJS) -o $@
 	@if [ $$? -eq 0 ]; then \
 		echo ${GREEN}"Compilation successful!"${WHITE}; \
@@ -26,7 +26,7 @@ clean:
 	@echo ${BLUE}">------Files clean-------<\n"${WHITE}
 fclean: clean
 	@$(RM) $(NAME)
-	@clear
+	@#clear
 	@echo ${BLUE}">------Files clean-------<\n"${WHITE}
 	@echo ${CYAN}">-------Name clean-------<\n"${WHITE}
 re: fclean all
