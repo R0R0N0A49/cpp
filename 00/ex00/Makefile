@@ -31,4 +31,4 @@ fclean: clean
 	@echo ${CYAN}">-------Name clean-------<\n"${WHITE}
 re: fclean all
 
-.PHONY: all clean fclean re cleanall first
+.PHONY: all clean fclean re
