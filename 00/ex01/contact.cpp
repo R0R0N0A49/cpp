@@ -6,7 +6,7 @@
 /*   By: trebours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:42:08 by trebours          #+#    #+#             */
-/*   Updated: 2024/08/02 16:42:12 by trebours         ###   ########.fr       */
+/*   Updated: 2024/09/24 08:12:06 by trebours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void Contact::ft_get_line(std::string &str)
 {
 	int	i;
 
-	std::getline(std::cin,  str);
+	if (!std::getline(std::cin,  str))
+		exit(1);
 	for (i = 0; str[i] == 32 || str[i] == '\t'; i++)
 		;
 	str = &str[i];
@@ -100,10 +101,6 @@ void Contact::init_all() {
 	Contact::init_secret();
 }
 
-std::string	Contact::get_first() {
-	return first;
-}
-
 void loop_print_name(std::string name)
 {
 	std::string tmp;
@@ -116,9 +113,9 @@ void loop_print_name(std::string name)
 	else if (name.length() == 10)
 		std::cout << name;
 	else {
-		for (int i = name.length(); i < 10 ; i++)
-			std::cout << " ";
-		std::cout << name;
+//		for (int i = name.length(); i < 10 ; i++)
+//			std::cout << " ";
+		std::cout << std::setw(10) << name;
 	}
 }
 
@@ -130,12 +127,11 @@ void	Contact::print_name() {
 	std::cout << CYAN << "|" << WHITE;
 	loop_print_name(Contact::nick);
 	std::cout << CYAN << "|";
-	std::cout << "\n|-----|----------|----------|----------|" << WHITE;
+	std::cout << "\n|----------|----------|----------|----------|" << WHITE;
 }
 
 void	Contact::print_all()
 {
-	system("clear");
 	std::cout << GREEN << "\nfirst name     : " << WHITE << Contact::first << std::endl;
 	std::cout << GREEN << "last name      : " << WHITE << Contact::last << std::endl;
 	std::cout << GREEN << "nickname       : " << WHITE << Contact::nick << std::endl;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: trebours <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 08:12:21 by trebours          #+#    #+#             */
+/*   Updated: 2024/09/24 08:12:24 by trebours         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
 
 int	ft_action(std::string line, Phonebook &test)
@@ -6,31 +18,19 @@ int	ft_action(std::string line, Phonebook &test)
 	{
 		system("clear");
 		test.print_msg("ADD  CONTACT");
-//		std::cout << GREEN <<	"\n****************************\n"
-//								"*       ADD  CONTACT       *\n"
-//								"****************************\n" << WHITE << std::endl;
 		test.add_contact();
 		system("clear");
 		test.print_msg("CONTACT  ADDED");
-//        std::cout << GREEN <<	"\n****************************\n"
-//								"*       CONTACT ADDED      *\n"
-//								"****************************\n" << WHITE << std::endl;
 	} else if (!line.compare("SEARCH")) {
 		system("clear");
 		test.search_contacts();
 	} else if (!line.compare("EXIT")) {
 		system("clear");
 		test.print_msg("Exit Phonebook");
-//        std::cout << GREEN <<	"\n****************************\n"
-//								"*      Exit Phonebook      *\n"
-//								"****************************\n" << WHITE << std::endl;
 		return (0);
 	} else {
 		system("clear");
 		test.print_msg("Imput  Error");
-//		std::cout << GREEN << "\n****************************\n"
-//								"*       Imput  Error       *\n"
-//								"****************************\n" << WHITE << std::endl;
 	}
 	return (-1);
 }
@@ -45,7 +45,9 @@ int main()
 	while (i == -1) {
 		test.prompt_action();
 		std::cout << GREEN << "> " << WHITE;
-		std::getline(std::cin, line);
-		i = ft_action(line, test);
+		if (!std::getline(std::cin, line))
+			i = 0;
+		else
+			i = ft_action(line, test);
 	}
 }

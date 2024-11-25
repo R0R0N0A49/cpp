@@ -6,7 +6,7 @@
 /*   By: trebours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 16:42:47 by trebours          #+#    #+#             */
-/*   Updated: 2024/08/02 16:42:52 by trebours         ###   ########.fr       */
+/*   Updated: 2024/10/30 15:37:55 by trebours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,13 @@ void Phonebook::add_contact() {
 void Phonebook::print_contact() {
 	int y = 0;
 
-	std::cout << CYAN << "|-----|----------|----------|----------|\n";
-	std::cout << CYAN << "|" << GREEN << "index" << CYAN << "|" << GREEN"first Name";
+	std::cout << CYAN << "|----------|----------|----------|----------|\n";
+	std::cout << CYAN << "|  " << GREEN << "index" << CYAN << "   |" << GREEN"first Name";
 	std::cout << CYAN "|" << GREEN" last Name";
 	std::cout << CYAN << "|" << GREEN <<"  Nickname" << CYAN <<"|\n";
-	std::cout << CYAN << "|-----|----------|----------|----------|\n" << WHITE;
+	std::cout << CYAN << "|----------|----------|----------|----------|\n" << WHITE;
 	while (y < NMB_CONTACTS && Phonebook::contact[y].is_exist()) {
-		if (y >= 9)
-			std::cout << CYAN << "|  " << GREEN << y + 1 << CYAN << " " << WHITE;
-		else
-			std::cout << CYAN << "|  " << GREEN << y + 1 << CYAN << "  " << WHITE;
+		std::cout << CYAN << "|"  << GREEN << std::setw(10) << y + 1 << WHITE;
 		Phonebook::contact[y].print_name();
 		std::cout << "\n";
 		y++;
@@ -112,7 +109,7 @@ void Phonebook::search_contacts()
 			}
 			i++;
 		}
-		if (i == line.length())
+		if (i == (int)line.length())
 		{
 			std::stringstream ss(line);
 			int index;
@@ -120,13 +117,16 @@ void Phonebook::search_contacts()
 			if (index <= NMB_CONTACTS && index >= 1)
 			{
 				if (Phonebook::contact[index - 1].is_exist()) {
+					system("clear");
+					ss << index - 1;
+					Phonebook::print_msg("Contact  " + ss.str());
 					Phonebook::contact[index - 1].print_all();
 					break ;
 				}
 				std::cout << RED << "Contact not found\n" << WHITE;
 			}
 			else
-				std::cout << RED << "Index must be Between 1 and " << std::to_string(NMB_CONTACTS) << "\n" << WHITE;
+				std::cout << RED << "Index must be Between 1 and " << NMB_CONTACTS << "\n" << WHITE;
 		}
 	}
 

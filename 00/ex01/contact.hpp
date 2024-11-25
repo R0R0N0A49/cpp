@@ -1,6 +1,8 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 # include <iostream>
+# include <iomanip>
+# include <cstdlib>
 # include <sstream>
 
 # define RED "\033[1;31m"
@@ -21,7 +23,6 @@ class Contact
 		void			print_name();
 		void			print_all();
 		int 			is_exist();
-		std::string 	get_first();
 
 	private:
 		void	ft_get_line(std::string &str);
@@ -32,11 +33,11 @@ class Contact
 		void	init_secret();
 
 	private:
-	std::string	first;
-	std::string	last;
-	std::string	nick;
-	std::string number;
-	std::string secret;
+		std::string	first;
+		std::string	last;
+		std::string	nick;
+		std::string number;
+		std::string secret;
 };
 
 # endif

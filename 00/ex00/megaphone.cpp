@@ -6,7 +6,7 @@
 /*   By: trebours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 12:47:30 by trebours          #+#    #+#             */
-/*   Updated: 2024/07/31 12:47:31 by trebours         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:41:16 by trebours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	main(int argc, char **argv)
 	}
 	for (int i = 1; argv[i]; i++) {
 		res += argv[i];
-		if (i < argc - 1)
-			res += ' ';
 	}
 	for (iter = res.begin(); iter < res.end(); ++iter)
 		*iter = std::toupper(*iter);
