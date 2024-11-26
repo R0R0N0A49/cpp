@@ -16,14 +16,14 @@ int	main()
 {
 	std::string	string = "HI THIS IS BRAIN";
 
-	std::string &stringPTR = string;
-	std::string *stringREF = &string;
+	std::string &stringREF = string;
+	std::string *stringPTR = &string;
 
 	std::cout << "\033[1;32m" << "base string address      : " << "\033[1;m" << &string     << std::endl;
-	std::cout << "\033[1;34m" << "reference string address : " << "\033[1;m" << &stringPTR << std::endl;
-	std::cout << "\033[1;36m" << "pointer string address   : " << "\033[1;m" << &stringREF << std::endl << std::endl;
+	std::cout << "\033[1;34m" << "reference string address : " << "\033[1;m" << &stringREF << std::endl;
+	std::cout << "\033[1;36m" << "pointer string address   : " << "\033[1;m" << &stringPTR << std::endl << std::endl;
 
 	std::cout << "\033[1;32m" << "base string value        : " << "\033[1;m" << string     << std::endl;
-	std::cout << "\033[1;34m" << "reference string value   : " << "\033[1;m" << stringPTR << std::endl;
-	std::cout << "\033[1;36m" << "pointer string value     : " << "\033[1;m" << stringREF << std::endl << "\033[1;m" << std::endl;
+	std::cout << "\033[1;34m" << "reference string value   : " << "\033[1;m" << stringREF << std::endl;
+	std::cout << "\033[1;36m" << "pointer string value     : " << "\033[1;m" << stringPTR << std::endl << "\033[1;m" << std::endl;
 }

@@ -113,8 +113,6 @@ void loop_print_name(std::string name)
 	else if (name.length() == 10)
 		std::cout << name;
 	else {
-//		for (int i = name.length(); i < 10 ; i++)
-//			std::cout << " ";
 		std::cout << std::setw(10) << name;
 	}
 }
@@ -132,7 +130,7 @@ void	Contact::print_name() {
 
 void	Contact::print_all()
 {
-	std::cout << GREEN << "\nfirst name     : " << WHITE << Contact::first << std::endl;
+	std::cout << GREEN << "first name     : " << WHITE << Contact::first << std::endl;
 	std::cout << GREEN << "last name      : " << WHITE << Contact::last << std::endl;
 	std::cout << GREEN << "nickname       : " << WHITE << Contact::nick << std::endl;
 	std::cout << GREEN << "phone number   : " << WHITE << Contact::number << std::endl;

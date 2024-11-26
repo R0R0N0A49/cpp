@@ -18,6 +18,7 @@ Zombie::Zombie(std::string src)
 }
 
 Zombie::~Zombie(void) {
+	std::cout << Zombie::name << " has destroyed !" << std::endl;
 }
 
 void Zombie::announce() {

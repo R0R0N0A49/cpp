@@ -21,6 +21,7 @@ void	lineswap(std::string file, std::string s1, std::string s2)
 	int	i;
 
 	output.open((file + ".replace").c_str());
+	i = -1;
 	while (std::getline(imput, line))
 	{
 		i = 0;
@@ -42,6 +43,10 @@ void	lineswap(std::string file, std::string s1, std::string s2)
 			output << s2;
 		}
 	}
+	if (i == -1)
+		std::cout << "the file cannot be opened !" << std::endl;
+	else
+		std::cout << "the string has been replace !" << std::endl;
 	imput.close();
 	output.close();
 }

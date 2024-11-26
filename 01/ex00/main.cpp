@@ -13,14 +13,14 @@
 #include "Zombie.hpp"
 
 /**
- * NEWZOMBIE :
+ * NewZombie :
  * This function creat and return a named zombie.
  * @param name > name of the zombie
  * @returns Zombie*
  **/
 Zombie*	newZombie( std::string name);
 /**
- * RANDOMCHUMP :
+ * RandomChump :
  * This function creat and announce a named zombie.
  * @param name > name of the zombie
  * @returns NONE

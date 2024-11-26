@@ -43,15 +43,36 @@ void Harl::error()
 	std::cerr << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
+static int	Harl_level(const std::string& src)
+{
+	std::string level[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (src == level[i])
+			return (i);
+	}
+	return (-1);
+}
+
 void Harl::complain(const std::string& level)
 {
-	if (level == "DEBUG")
-		Harl::debug();
-	if (level == "INFO")
-		Harl::info();
-	if (level == "WARNING")
-		Harl::warning();
-	if (level == "ERROR")
-		Harl::error();
+	switch (Harl_level(level)) {
+		case 0:
+			Harl::debug();
+			break;
+		case 1 :
+			Harl::info();
+			break;
+		case 2 :
+			Harl::warning();
+			break;
+		case 3 :
+			Harl::error();
+			break;
+		case -1 :
+			std::cout << "Error Imput\nInput valid = \"DEBUG\" \"INFO\""
+						 " \"WARNING\" \"ERROR\"\n";
+	}
 }
 
