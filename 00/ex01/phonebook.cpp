@@ -129,5 +129,26 @@ void Phonebook::search_contacts()
 				std::cout << RED << "Index must be Between 1 and " << NMB_CONTACTS << "\n" << WHITE;
 		}
 	}
-
 }
+
+bool	Phonebook::ft_action(std::string line, Phonebook &test) {
+	if (!line.compare("ADD")) {
+		system("clear");
+		test.print_msg("ADD  CONTACT");
+		test.add_contact();
+		system("clear");
+		test.print_msg("CONTACT  ADDED");
+	} else if (!line.compare("SEARCH")) {
+		system("clear");
+		test.search_contacts();
+	} else if (!line.compare("EXIT")) {
+		system("clear");
+		test.print_msg("Exit Phonebook");
+		return (false);
+	} else {
+		system("clear");
+		test.print_msg("Imput  Error");
+	}
+	return (true);
+}
+

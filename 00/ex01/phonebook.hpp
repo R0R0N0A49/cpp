@@ -13,6 +13,7 @@ class Phonebook
 		void	prompt_welcome();
 		void	prompt_action();
 		void	add_contact();
+		bool	ft_action(std::string line, Phonebook &test);
 		void	print_msg(std::string msg);
 
 	private:

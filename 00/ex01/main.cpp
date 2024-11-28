@@ -12,29 +12,6 @@
 
 #include "phonebook.hpp"
 
-int	ft_action(std::string line, Phonebook &test)
-{
-	if (!line.compare("ADD"))
-	{
-		system("clear");
-		test.print_msg("ADD  CONTACT");
-		test.add_contact();
-		system("clear");
-		test.print_msg("CONTACT  ADDED");
-	} else if (!line.compare("SEARCH")) {
-		system("clear");
-		test.search_contacts();
-	} else if (!line.compare("EXIT")) {
-		system("clear");
-		test.print_msg("Exit Phonebook");
-		return (0);
-	} else {
-		system("clear");
-		test.print_msg("Imput  Error");
-	}
-	return (-1);
-}
-
 int main()
 {
 	int	i = -1;
@@ -42,12 +19,12 @@ int main()
 	Phonebook test;
 	system("clear");
 	test.prompt_welcome();
-	while (i == -1) {
+	while (i) {
 		test.prompt_action();
 		std::cout << GREEN << "> " << WHITE;
 		if (!std::getline(std::cin, line))
-			i = 0;
+			i = false;
 		else
-			i = ft_action(line, test);
+			i = test.ft_action(line, test);
 	}
 }
