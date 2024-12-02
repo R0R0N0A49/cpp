@@ -13,6 +13,9 @@ class Point
 
 	public:
 		Point & operator= (Point const & src);
+		bool	operator== (Point const & src) const;
+		Fixed	gx() const;
+		Fixed	gy() const;
 		void	printValue();
 
 	private:

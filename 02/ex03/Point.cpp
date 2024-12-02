@@ -21,3 +21,17 @@ Point &Point::operator=(const Point &src) {
 void	Point::printValue() {
 	std::cout << "x = " << this->_x << " y = " << this->_y << std::endl;
 }
+
+bool	Point::operator==(const Point &src) const {
+	if (this->_x == src._x  && this->_y == src._y)
+		return (true);
+	return (false);
+}
+
+Fixed Point::gx() const {
+	return (this->_x);
+}
+
+Fixed Point::gy() const {
+	return (this->_y);
+}
