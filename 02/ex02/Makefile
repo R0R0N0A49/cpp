@@ -18,7 +18,7 @@ $(NAME) : $(OBJS)
 	@if [ $$? -eq 0 ]; then \
 		echo ${GREEN}"Compilation successful!"${WHITE}; \
 	fi
-%.o: %.c
+%.o: %.cpp
 	@$(CPP) $(CFLAGS) -c $< -o $@
 clean:
 	@clear
