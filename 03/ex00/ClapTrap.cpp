@@ -2,6 +2,15 @@
 
 #include <string>
 
+ClapTrap::ClapTrap()
+{
+	this->_name = "Default";
+	this->_attackDamage = 0;
+	this->_energyPoints = 10;
+	this->_hitPoints = 10;
+	std::cout << "ClapTrap default constructor called\n";
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	this->_name = name;
@@ -14,9 +23,9 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(ClapTrap const& cpy)
 {
 	this->_name = cpy._name;
-	this->_attackDamage = 0;
-	this->_energyPoints = 10;
-	this->_hitPoints = 10;
+	this->_attackDamage = cpy._attackDamage;
+	this->_energyPoints = cpy._energyPoints;
+	this->_hitPoints = cpy._hitPoints;
 	std::cout << "the ClapTrap " << cpy._name << " is duplicate\n";
 }
 
