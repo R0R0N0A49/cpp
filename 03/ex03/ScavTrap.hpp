@@ -1,16 +1,18 @@
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#pragma once
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 	public:
+		ScavTrap();
 		ScavTrap(std::string name);
-		ScavTrap(ScavTrap& cpy);
+		ScavTrap(const ScavTrap& cpy);
 		~ScavTrap();
 
 	public:
 		void guardGate();
-};
+		ScavTrap& operator=(const ScavTrap& cpy);
 
-#endif
+	private:
+		bool _guarding_gate;
+};

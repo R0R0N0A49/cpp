@@ -1,6 +1,12 @@
 #include "ClapTrap.hpp"
 
-#include <string>
+ClapTrap::ClapTrap()
+{
+	this->_name = "Default";
+	this->_attackDamage = 0;
+	this->_energyPoints = 10;
+	this->_hitPoints = 10;
+}
 
 ClapTrap::ClapTrap(std::string name)
 {
@@ -8,7 +14,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->_attackDamage = 0;
 	this->_energyPoints = 10;
 	this->_hitPoints = 10;
-	std::cout << "the ClapTrap " << name << " is create\n";
+	std::cout << "ClapTrap " << name << " as create\n";
 }
 
 ClapTrap::ClapTrap(ClapTrap const& cpy)
@@ -17,18 +23,11 @@ ClapTrap::ClapTrap(ClapTrap const& cpy)
 	this->_attackDamage = 0;
 	this->_energyPoints = 10;
 	this->_hitPoints = 10;
-	std::cout << "the ClapTrap " << cpy._name << " is duplicate\n";
+	std::cout << "ClapTrap " << cpy._name << " are duplicate\n";
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "the ClapTrap " << this->_name << " is destroy\n";
-}
-
-void	ClapTrap::initVar(int HP, int MP, int ATK)
-{
-	this->_hitPoints = HP;
-	this->_energyPoints = MP;
-	this->_attackDamage = ATK;
+	std::cout << "ClapTrap " << this->_name << " as destroy\n";
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& cpy)
@@ -84,9 +83,3 @@ void ClapTrap::printName() const
 {
 	std::cout << this->_name;
 }
-
-std::string ClapTrap::getName() const
-{
-	return this->_name;
-}
-
