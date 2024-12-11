@@ -2,6 +2,14 @@
 
 #include <string>
 
+ClapTrap::ClapTrap(){
+	this->_name = "Default";
+	this->_attackDamage = 0;
+	this->_energyPoints = 10;
+	this->_hitPoints = 10;
+	std::cout << "ClapTrap constructor called\n";
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	this->_name = name;
@@ -14,21 +22,14 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(ClapTrap const& cpy)
 {
 	this->_name = cpy._name;
-	this->_attackDamage = 0;
-	this->_energyPoints = 10;
-	this->_hitPoints = 10;
+	this->_attackDamage = cpy._attackDamage;
+	this->_energyPoints = cpy._energyPoints;
+	this->_hitPoints = cpy._hitPoints;
 	std::cout << "the ClapTrap " << cpy._name << " is duplicate\n";
 }
 
 ClapTrap::~ClapTrap() {
 	std::cout << "the ClapTrap " << this->_name << " is destroy\n";
-}
-
-void	ClapTrap::initVar(int HP, int MP, int ATK)
-{
-	this->_hitPoints = HP;
-	this->_energyPoints = MP;
-	this->_attackDamage = ATK;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& cpy)
@@ -79,14 +80,3 @@ void ClapTrap::takeDamage(unsigned int amount)
 	else
 		std::cout << this->_name << " is dead" << std::endl;
 }
-
-void ClapTrap::printName() const
-{
-	std::cout << this->_name;
-}
-
-std::string ClapTrap::getName() const
-{
-	return this->_name;
-}
-

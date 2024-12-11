@@ -1,4 +1,4 @@
-NAME = FragTrap
+NAME = ScavTrap
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
@@ -13,7 +13,6 @@ WHITE='\033[0;m'
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@#clear
 	@$(CPP) $(CFLAGS) $(OBJS) -o $@
 	@if [ $$? -eq 0 ]; then \
 		echo ${GREEN}"Compilation successful!"${WHITE}; \
@@ -34,13 +33,16 @@ BAR_LENGTH=20
 	for i in $$(seq 1 $$completed); do echo -n "█"; done; \
 	for i in $$(seq 1 $$remaining); do echo -n "▒"; done
 	@echo "] ($(COUNT)/$(TOTAL))"
+
 clean:
 	@clear
 	@$(RM) $(OBJS)
 	@echo ${BLUE}">------Files clean-------<\n"${WHITE}
+
 fclean: clean
 	@$(RM) $(NAME)
 	@echo ${CYAN}">-------Name clean-------<\n"${WHITE}
+
 re: fclean all
 
 .PHONY: all clean fclean re cleanall first
