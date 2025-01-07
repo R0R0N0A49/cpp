@@ -14,7 +14,7 @@ public:
 	void    rename(std::string src);
 
 private:
-	std::string name;
+	std::string _name;
 };
 
 #endif

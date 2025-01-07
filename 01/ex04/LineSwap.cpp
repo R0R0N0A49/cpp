@@ -12,41 +12,44 @@
 
 #include "LineSwap.hpp"
 
-void	lineswap(std::string file, std::string s1, std::string s2)
+LineSwap::LineSwap() {
+}
+
+LineSwap::LineSwap(std::string file) {
+	this->_input.open(file.c_str());
+	this->_output.open((file + ".replace").c_str());
+	std::cout << "files are open !\n\n";
+}
+LineSwap::~LineSwap() {
+	this->_input.close();
+	this->_output.close();
+	std::cout << "\nfiles are close !\n";
+}
+
+void	LineSwap::swap( std::string s1, std::string s2)
 {
 	std::string line;
-	std::ifstream imput(file);
-	std::ofstream output;
 	int pos;
 	int	i;
 
-	output.open((file + ".replace").c_str());
 	i = -1;
-	while (std::getline(imput, line))
-	{
+	while (std::getline(_input, line)) {
 		i = 0;
 		pos = 0;
-		while (pos != std::string::npos)
-		{
+		while (pos != (int)std::string::npos) {
 			pos = line.find(s1, i);
-			if (pos == std::string::npos)
-			{
-				output << &line[i] << std::endl;
-				break ;
-			}
-			while (i < pos)
-			{
-				output << line[i];
+			if (pos == (int)std::string::npos) {
+				_output << &line[i] << std::endl;
+				break;
+			} while (i < pos) {
+				_output << line[i];
 				i++;
 			}
 			i = pos + s1.size();
-			output << s2;
+			_output << s2;
 		}
-	}
-	if (i == -1)
+	} if (i == -1)
 		std::cout << "the file cannot be opened !" << std::endl;
 	else
 		std::cout << "the string has been replace !" << std::endl;
-	imput.close();
-	output.close();
 }

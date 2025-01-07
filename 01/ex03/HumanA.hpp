@@ -13,8 +13,8 @@ class HumanA
 		void	attack();
 
 	private:
-		std::string	name;
-		Weapon& type;
+		std::string	_name;
+		Weapon& _type;
 };
 
 # endif

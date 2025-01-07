@@ -13,17 +13,19 @@
 #include "Weapon.hpp"
 
 Weapon::Weapon(std::string src){
-	type = src;
+	this->_type = src;
+	std::cout << "Weapon creat\n";
 }
 
 Weapon::~Weapon(){
+	std::cout << "Weapon destroyer called\n";
 }
 
 const std::string&	Weapon::getType() {
-	return (Weapon::type);
+	return (this->_type);
 }
 
 void Weapon::setType(std::string src) {
-	Weapon::type = src;
+	this->_type = src;
 }
 

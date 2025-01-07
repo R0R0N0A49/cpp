@@ -3,7 +3,8 @@
 double areaCalculator(Point const a, Point const b, Point const c)
 {
 	Fixed tmp = a.gx() * (b.gy() - c.gy()) + b.gx() * (c.gy() - a.gy()) + c.gx() * (a.gy() - b.gy());
-	double area = 0.5 * abs(tmp.toInt());
+	tmp = (tmp < 0) ? tmp * -1 : tmp;
+	double area = 0.5 * tmp.toFloat();
 	return area;
 }
 

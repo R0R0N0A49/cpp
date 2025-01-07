@@ -24,4 +24,6 @@ int main()
 	h.complain("WARNING");
 	std::cout << "\033[1;31m" << "\n[ Error ]\n" << "\033[1;m";
 	h.complain("ERROR");
+	std::cout << "\033[1;35m" << "\n[ DEBUG ]\n" << "\033[1;m";
+	h.complain("DEBUG");
 }

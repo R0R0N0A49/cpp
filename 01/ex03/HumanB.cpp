@@ -12,18 +12,20 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string src): name(src) {
-	type = NULL;
+HumanB::HumanB(std::string src): _name(src) {
+	this->_type = NULL;
+	std::cout << "Human B creat\n";
 }
 
 HumanB::~HumanB(){
+	std::cout << "Human A destroy\n";
 }
 
 void HumanB::attack()
 {
-	std::cout << HumanB::name  << " attacks with their ";
-	if (HumanB::type)
-		std::cout << HumanB::type->getType();
+	std::cout << this->_name  << " attacks with their ";
+	if (this->_type)
+		std::cout << this->_type->getType();
 	else
 		std::cout << "(NULL)";
 	std::cout << std::endl;
@@ -31,6 +33,5 @@ void HumanB::attack()
 
 void HumanB::setWeapon(Weapon& weapon)
 {
-	type = &weapon;
+	this->_type = &weapon;
 }
-

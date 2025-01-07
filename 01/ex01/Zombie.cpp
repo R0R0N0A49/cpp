@@ -13,18 +13,19 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie() {
+	std::cout << "default Zombie a creat\n";
 }
 
 Zombie::~Zombie(void) {
-	std::cout << Zombie::name << " has destroyed !" << std::endl;
+	std::cout << Zombie::_name << " has destroyed !" << std::endl;
 }
 
 void Zombie::announce() {
-	std::cout << Zombie::name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << Zombie::_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void Zombie::rename(std::string src)
 {
-	name = src;
+	this->_name = src;
 }
 

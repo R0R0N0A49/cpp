@@ -47,7 +47,7 @@ void Harl::error()
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
-static int	Harl_level(const std::string& src)
+static int	HarlLevel(const std::string& src)
 {
 	std::string level[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
@@ -61,13 +61,17 @@ static int	Harl_level(const std::string& src)
 
 void Harl::complain(const std::string& level)
 {
-	switch (Harl_level(level))
+	switch (HarlLevel(level))
 	{
-		case 0: debug();
-		case 1: info();
-		case 2: warning();
-		case 3: error(); break ;
-		case -1: std::cout << "Error Imput\nInput valid = \"DEBUG\" \"INFO\""
-					   " \"WARNING\" \"ERROR\"\n";
+		case 0:
+			this->debug();
+		case 1:
+			this->info();
+		case 2:
+			this->warning();
+		case 3:
+			this->error();
+			break ;
+		case -1: std::cout << "[ Probably complaining about insignificant problems ]\n";
 	}
 }

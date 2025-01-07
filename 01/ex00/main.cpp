@@ -31,11 +31,13 @@ int main() {
 	Zombie zombie_1("Kevin");
 	Zombie* zombie_2 = newZombie("Stuart");
 
-	std::cout << "\033[1;34m" << "zombie_1 announce :" << "\33[1;m" << std::endl;
+	std::cout << "\033[1;36m" << "\n#######################-TEST-#######################\n" << std::endl;
+	std::cout << "\033[38;2;0;100;200m" << "zombie announce :" << "\33[1;m" << std::endl;
 	zombie_1.announce();
-	std::cout << "\33[1;33m" << "zombie_2 announce :" << "\33[1;m" << std::endl;
+	std::cout << "\33[1;33m" << "zombie creat by newZombie() :" << "\33[1;m" << std::endl;
 	zombie_2->announce();
-	std::cout << "\33[1;32m" << "zombie_3 announce :" << "\33[1;m" << std::endl;
+	std::cout << "\33[1;32m" << "zombie announce by randomChump() :" << "\33[1;m" << std::endl;
 	randomChump("Bob");
+	std::cout << "\033[1;36m" << "\n#######################-END-#######################\n" << std::endl << "\033[1;m";
 	delete (zombie_2);
 }

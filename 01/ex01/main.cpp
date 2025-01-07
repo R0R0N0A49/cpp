@@ -16,14 +16,16 @@ Zombie* zombieHorde(int N, std::string name );
 
 int main()
 {
-	int N = 50;
+	int N = 5;
 	std::string name = "bob";
 
 	Zombie* z = zombieHorde(N, name);
+	std::cout << "\n\033[38;2;0;100;200m" << "##########-ZOMBIE-ANNOUNCEMENT-#########" << "\033[1;m\n";
 	for (int i = 0; i < N; i++)
 	{
-		std::cout << "\033[1;34m" << "\n" + name + "_" << i + 1 << " announce :" << "\033[1;m" << std::endl;
+		std::cout << "\033[1;36m" << "\n" + name + "_" << i + 1 << " announce :" << "\033[1;m" << std::endl;
 		z[i].announce();
 	}
+	std::cout << "\n\033[38;2;0;100;200m" << "###############-END-TEST-###############" << "\033[1;m\n\n";
 	delete [] z;
 }
