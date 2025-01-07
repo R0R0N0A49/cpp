@@ -13,7 +13,6 @@ WHITE='\033[0;m'
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@#clear
 	@$(CPP) $(CFLAGS) $(OBJS) -o $@
 	@if [ $$? -eq 0 ]; then \
 		echo ${GREEN}"Compilation successful!"${WHITE}; \

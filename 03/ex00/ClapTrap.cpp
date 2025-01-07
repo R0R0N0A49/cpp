@@ -1,85 +1,82 @@
 #include "ClapTrap.hpp"
 
-#include <string>
-
-ClapTrap::ClapTrap()
-{
-	this->_name = "Default";
-	this->_attackDamage = 0;
-	this->_energyPoints = 10;
-	this->_hitPoints = 10;
-	std::cout << "ClapTrap default constructor called\n";
+ClapTrap::ClapTrap() : _name("default"), _hitPoint(10), _energyPoint(10), _attack(0), _maxHeal(_hitPoint) {
+	std::cout << "default constructor called\n";
 }
 
-ClapTrap::ClapTrap(std::string name)
-{
-	this->_name = name;
-	this->_attackDamage = 0;
-	this->_energyPoints = 10;
-	this->_hitPoints = 10;
-	std::cout << "the ClapTrap " << name << " is create\n";
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attack(0), _maxHeal(_hitPoint) {
+	std::cout << "clapTrap name constructor called\n";
 }
 
-ClapTrap::ClapTrap(ClapTrap const& cpy)
+ClapTrap::ClapTrap(ClapTrap &src) {
+	this->_name = src._name;
+	this->_hitPoint = src._hitPoint;
+	this->_maxHeal = src._maxHeal;
+	this->_energyPoint = src._energyPoint;
+	this->_attack = src._attack;
+	std::cout << "ClapTrap copy constructor called\n";
+}
+
+ClapTrap& ClapTrap::operator=(ClapTrap const& src) {
+	this->_name = src._name;
+	this->_hitPoint = src._hitPoint;
+	this->_maxHeal = src._maxHeal;
+	this->_energyPoint = src._energyPoint;
+	this->_attack = src._attack;
+	std::cout << "ClapTrap operator= called\n";
+	return (*this);
+}
+
+std::ostream & ClapTrap::info(std::ostream & o) const
 {
-	this->_name = cpy._name;
-	this->_attackDamage = cpy._attackDamage;
-	this->_energyPoints = cpy._energyPoints;
-	this->_hitPoints = cpy._hitPoints;
-	std::cout << "the ClapTrap " << cpy._name << " is duplicate\n";
+	o << "\nname        = " << this->_name << "\nHitPoint    = " << this->_hitPoint << "\nEnergyPoint = " << this->_energyPoint << "\nattack      = " << this->_attack << std::endl;
+	return (o);
+}
+
+std::ostream& operator<< (std::ostream & o, ClapTrap const & src)
+{
+	return (src.info(o));
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "the ClapTrap " << this->_name << " is destroy\n";
+	std::cout << "clapTrap destructor called\n";
 }
 
-
-ClapTrap& ClapTrap::operator=(ClapTrap const& cpy)
-{
-	this->_name = cpy._name;
-	this->_attackDamage = cpy._attackDamage;
-	this->_energyPoints = cpy._energyPoints;
-	this->_hitPoints = cpy._hitPoints;
-	std::cout << "the ClapTrap " << this->_name << " is copy\n";
-	return *this;
-}
-
-static void outEnergy(std::string src, std::string &name)
-{
-	std::cout << name << " does not have enough energy for " << src << std::endl;
-}
-
-void ClapTrap::attack(const std::string& target)
-{
-	if (this->_energyPoints > 0 && this->_hitPoints)
-	{
-		std::cout << this->_name << " attack " << target << std::endl;
-		std::cout << target << " lose " << this->_attackDamage << " hit point" << std::endl;
-		this->_energyPoints--;
+void ClapTrap::attack(const std::string &target) {
+	if (this->_hitPoint > 0 && this->_energyPoint > 0) {
+		this->_energyPoint--;
+		std::cout << "ClapTrap " << this->_name << " attack ClapTrap " << target << " and does " << this->_attack
+				  << " damage !\n";
 	}
 	else
-		outEnergy("attacking", this->_name);
+		std::cout << "ClapTrap " << this->_name << " can't attack !\n";
 }
 
-void ClapTrap::beRepaired(unsigned int amount)
-{
-	if (this->_energyPoints > 0 && this->_hitPoints)
+void ClapTrap::beRepaired(unsigned int amount) {
+	if (this->_hitPoint > 0 && this->_energyPoint > 0)
 	{
-		std::cout << this->_name << " repaired " << amount << " hit point" << std::endl;
-		this->_energyPoints--;
+		std::cout << "ClapTrap " << this->_name << " gets repaired and regains " << amount << " hitPoint !\n";
+		this->_energyPoint--;
+		if (this->_maxHeal < this->_hitPoint + amount)
+			this->_hitPoint = this->_maxHeal;
+		else
+			this->_hitPoint += amount;
 	}
 	else
-		outEnergy("repaired", this->_name);
+		std::cout << "ClapTrap " << this->_name << " can't repaired !\n";
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
-{
-	if (this->_hitPoints)
+void ClapTrap::takeDamage(unsigned int amount) {
+	if (this->_hitPoint > 0)
 	{
-		std::cout << this->_name << " takes " << amount << " hit point" <<std::endl;
-		this->_hitPoints -= amount;
+		std::cout << "ClapTrap " << this->_name << " take " << amount << " damage !\n";
+		if (this->_hitPoint < amount)
+			this->_hitPoint = 0;
+		else
+			this->_hitPoint -= amount;
+		if (this->_hitPoint == 0)
+			std::cout << "ClapTrap " << this->_name << " is dead !\n";
 	}
 	else
-		std::cout << this->_name << " is dead" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is already dead !\n";
 }
-

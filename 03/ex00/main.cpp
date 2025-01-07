@@ -1,20 +1,28 @@
 #include "ClapTrap.hpp"
 
-int main()
+int main ()
 {
-	ClapTrap clapTrap("BOB");
-	ClapTrap tmp("jo");
-	ClapTrap clapTrap2("ClapTrap");
-
-	for (int i = 0; i < 15 ; i++)
-	{
-		std::cout << "\033[1;35m";
-		clapTrap.attack("ClapTrap");
-		std::cout << "\033[1;32m";
-		clapTrap2.beRepaired(0);
-		std::cout << "\033[1;36m";
-		tmp.takeDamage(1);
-	}
-	std::cout << "\033[1;m";
-	return 0;
+	ClapTrap derey("Denis");
+	std::cout << derey << std::endl;
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	derey.attack("Toma");
+	std::cout << derey << std::endl;
+	derey.takeDamage(9);
+	std::cout << derey << std::endl;
+	derey.beRepaired(120);
+	std::cout << derey << std::endl;
+	derey.attack("Toma");
+	ClapTrap trebours("Toma");
+	std::cout << trebours << std::endl;
+	trebours.takeDamage(9999);
+	std::cout << trebours << std::endl;
+	trebours.beRepaired(10);
+	trebours.attack("Denis");
 }
