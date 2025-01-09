@@ -3,16 +3,20 @@
 
 /************************* Constructor  Destructor *************************/
 
-Fixed::Fixed() {
+Fixed::Fixed() : constvalus(8) {
 	Fixed::rawbits = 0;
 }
 
-Fixed::Fixed(const int& value) {
+Fixed::Fixed(const int& value) : constvalus(8) {
 	setRawBits((int)roundf(value * (1 << this->constvalus)));
 }
 
-Fixed::Fixed(const float& value) {
+Fixed::Fixed(const float& value) : constvalus(8) {
 	setRawBits((int)roundf(value * (1 << this->constvalus)));
+}
+
+Fixed::Fixed(const Fixed& other) : constvalus(8) {
+	Fixed::rawbits = other.rawbits;
 }
 
 Fixed::~Fixed(){
@@ -26,10 +30,6 @@ float Fixed::toFloat() const {
 
 int Fixed::toInt() const {
 	return (getRawBits() >> Fixed::constvalus);
-}
-
-Fixed::Fixed(const Fixed& other) {
-	Fixed::rawbits = other.rawbits;
 }
 
 void Fixed::setRawBits(int const raw) {

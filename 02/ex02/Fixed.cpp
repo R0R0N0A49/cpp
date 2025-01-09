@@ -3,16 +3,20 @@
 
 /************************* Constructor  Destructor *************************/
 
-Fixed::Fixed() {
+Fixed::Fixed() : constvalus(8) {
 	Fixed::rawbits = 0;
 }
 
-Fixed::Fixed(const int& value) {
+Fixed::Fixed(const int& value) : constvalus(8) {
 	setRawBits((int)roundf(value * (1 << this->constvalus)));
 }
 
-Fixed::Fixed(const float& value) {
+Fixed::Fixed(const float& value) : constvalus(8){
 	setRawBits((int)roundf(value * (1 << this->constvalus)));
+}
+
+Fixed::Fixed(const Fixed& other): constvalus(8) {
+	Fixed::rawbits = other.rawbits;
 }
 
 Fixed::~Fixed(){
@@ -28,10 +32,6 @@ int Fixed::toInt() const {
 	return (getRawBits() >> Fixed::constvalus);
 }
 
-Fixed::Fixed(const Fixed& other) {
-	Fixed::rawbits = other.rawbits;
-}
-
 void Fixed::setRawBits(int const raw) {
 	Fixed::rawbits = raw;
 }
@@ -40,13 +40,13 @@ int Fixed::getRawBits() const {
 	return (rawbits);
 }
 
-float Fixed::max(Fixed &a, Fixed &b) {
+float Fixed::max(Fixed const &a, Fixed const &b) {
 	if (a.toFloat() > b.toFloat())
 		return (a.toFloat());
 	return (b.toFloat());
 }
 
-float Fixed::min(Fixed &a,Fixed &b) {
+float Fixed::min(Fixed const &a,Fixed const &b) {
 	if (a < b)
 		return (a.toFloat());
 	return (b.toFloat());
@@ -60,7 +60,7 @@ std::ostream& operator<<( std::ostream & o, Fixed const & rhs) {
 }
 
 Fixed& Fixed::operator=(const Fixed& other) {
-	Fixed::setRawBits(other.getRawBits());
+	this->rawbits = other.getRawBits();
 	return (*this);
 }
 
@@ -140,7 +140,7 @@ Fixed& Fixed::operator++() {
 }
 
 Fixed Fixed::operator--(int) {
-	Fixed tmp = *this;
+	Fixed tmp(*this);
 	(this->rawbits)--;
 	return (tmp);
 }

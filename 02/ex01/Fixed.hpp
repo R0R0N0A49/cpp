@@ -19,7 +19,7 @@ class Fixed
 		Fixed & operator= (Fixed const & src);
 	private:
 		int	rawbits;
-		int constvalus = 8;
+		int constvalus;
 };
 
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs);

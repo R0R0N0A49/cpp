@@ -20,6 +20,10 @@ int main()
 	std::string name = "bob";
 
 	Zombie* z = zombieHorde(N, name);
+	if (!z) {
+		std::cout << "Error\n";
+		return (1);
+	}
 	std::cout << "\n\033[38;2;0;100;200m" << "##########-ZOMBIE-ANNOUNCEMENT-#########" << "\033[1;m\n";
 	for (int i = 0; i < N; i++)
 	{
