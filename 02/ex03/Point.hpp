@@ -23,4 +23,6 @@ class Point
 		const Fixed _y;
 };
 
+std::ostream & operator<<( std::ostream & o, Point const & rhs);
+
 #endif

@@ -18,6 +18,11 @@ Point &Point::operator=(const Point &src) {
 	return (*this);
 }
 
+std::ostream& operator<<( std::ostream & o, Point const & rhs) {
+	o << "[" << rhs.gx() << "," << rhs.gy() << "]";
+	return (o);
+}
+
 void	Point::printValue() {
 	std::cout << "x = " << this->_x << " y = " << this->_y << std::endl;
 }

@@ -33,5 +33,6 @@ void Brain::printAll() {
 	}
 }
 void Brain::setNew(Brain& other) {
+
 	*this = other;
 }

@@ -28,11 +28,13 @@ ScavTrap::ScavTrap(ScavTrap &cpy) : ClapTrap(cpy){
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &cpy) {
-	this->_name = cpy._name;
-	this->_attack = cpy._attack;
-	this->_energyPoint = cpy._energyPoint;
-	this->_hitPoint = cpy._hitPoint;
-	this->_maxHeal = cpy._hitPoint;
+	if (this != &cpy) {
+		this->_name = cpy._name;
+		this->_attack = cpy._attack;
+		this->_energyPoint = cpy._energyPoint;
+		this->_hitPoint = cpy._hitPoint;
+		this->_maxHeal = cpy._hitPoint;
+	}
 	return (*this);
 }
 

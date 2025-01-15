@@ -1,6 +1,9 @@
 #pragma once
 
 #include "iostream"
+#define Reset "\033[1;m"
+#define Blue "\033[1;38;2;0;100;150m"
+#define Red "\033[1;38;2;150;0;100m"
 
 class ClapTrap
 {

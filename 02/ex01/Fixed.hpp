@@ -18,8 +18,8 @@ class Fixed
 		void	setRawBits(int const raw);
 		Fixed & operator= (Fixed const & src);
 	private:
-		int	rawbits;
-		int constvalus;
+		int	_rawbits;
+		static const int _constvalus = 8;
 };
 
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs);

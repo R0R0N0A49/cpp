@@ -6,7 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	this->_energyPoint = 50;
 	this->_hitPoint = 100;
 	this->_maxHeal = 100;
-	std::cout << "ScavTrap default constructor called\n";
+	std::cout << B << "ScavTrap default constructor called\n" << Reset;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->_energyPoint = 50;
 	this->_hitPoint = 100;
 	this->_maxHeal = 100;
-	std::cout << "ScavTrap name constructor called\n";
+	std::cout << B << "ScavTrap name constructor called\n" << Reset;
 }
 
 ScavTrap::ScavTrap(ScavTrap &cpy) : ClapTrap(cpy){
@@ -24,20 +24,22 @@ ScavTrap::ScavTrap(ScavTrap &cpy) : ClapTrap(cpy){
 	this->_energyPoint = cpy._energyPoint;
 	this->_hitPoint = cpy._hitPoint;
 	this->_maxHeal = cpy._hitPoint;
-	std::cout << "ScavTrap copy constructor called\n";
+	std::cout << B << "ScavTrap copy constructor called\n" << Reset;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &cpy) {
-	this->_name = cpy._name;
-	this->_attack = cpy._attack;
-	this->_energyPoint = cpy._energyPoint;
-	this->_hitPoint = cpy._hitPoint;
-	this->_maxHeal = cpy._hitPoint;
+	if (this != &cpy) {
+		this->_name = cpy._name;
+		this->_attack = cpy._attack;
+		this->_energyPoint = cpy._energyPoint;
+		this->_hitPoint = cpy._hitPoint;
+		this->_maxHeal = cpy._hitPoint;
+	}
 	return (*this);
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "ScavTrap destructor called\n";
+	std::cout << R << "ScavTrap destructor called\n" << Reset;
 }
 
 void ScavTrap::attack(const std::string &target) {

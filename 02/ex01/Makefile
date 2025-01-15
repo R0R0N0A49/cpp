@@ -26,8 +26,6 @@ clean:
 	@echo ${BLUE}">------Files clean-------<\n"${WHITE}
 fclean: clean
 	@$(RM) $(NAME)
-	@#clear
-	@echo ${BLUE}">------Files clean-------<\n"${WHITE}
 	@echo ${CYAN}">-------Name clean-------<\n"${WHITE}
 re: fclean all
 

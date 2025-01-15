@@ -1,22 +1,26 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() : constvalus(8) {
-	this->rawbits = 0;
+Fixed::Fixed() {
+	this->_rawbits = 0;
 }
 
 Fixed::Fixed(const Fixed& other) {
-	this->constvalus = 8;
-	this->rawbits = other.rawbits;
+	this->_rawbits = other._rawbits;
 }
 
 Fixed::~Fixed(){
 }
 
 Fixed& Fixed::operator=(const Fixed& other) {
-	this->rawbits = other.rawbits;
+	this->_rawbits = other._rawbits;
 	return *this;
 }
 
 int Fixed::getRawBits() const {
-	return (rawbits);
+	return (_rawbits);
+}
+
+void Fixed::setRawBits(int const raw)
+{
+	this->_rawbits = raw;
 }

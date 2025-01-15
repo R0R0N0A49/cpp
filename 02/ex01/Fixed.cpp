@@ -1,20 +1,20 @@
 #include "Fixed.hpp"
 #include <math.h>
 
-Fixed::Fixed() : constvalus(8) {
-	Fixed::rawbits = 0;
+Fixed::Fixed() {
+	Fixed::_rawbits = 0;
 }
 
-Fixed::Fixed(const int& value) : constvalus(8) {
-	setRawBits(value << Fixed::constvalus);
+Fixed::Fixed(const int& value) {
+	setRawBits(value << this->_constvalus);
 }
 
-Fixed::Fixed(const float& value) : constvalus(8) {
-	setRawBits((int)roundf(value * (1 << this->constvalus)));
+Fixed::Fixed(const float& value) {
+	setRawBits((int)roundf(value * (1 << this->_constvalus)));
 }
 
-Fixed::Fixed(const Fixed& other) : constvalus(8) {
-	Fixed::rawbits = other.rawbits;
+Fixed::Fixed(const Fixed& other) {
+	Fixed::_rawbits = other._rawbits;
 }
 
 Fixed::~Fixed(){
@@ -22,12 +22,12 @@ Fixed::~Fixed(){
 
 float Fixed::toFloat() const
 {
-	return ((float)getRawBits() / (1 << Fixed::constvalus));
+	return ((float)getRawBits() / (1 << this->_constvalus));
 }
 
 int Fixed::toInt() const
 {
-	return (getRawBits() >> Fixed::constvalus);
+	return (getRawBits() >> this->_constvalus);
 }
 
 std::ostream& operator<<( std::ostream & o, Fixed const & rhs)
@@ -38,16 +38,16 @@ std::ostream& operator<<( std::ostream & o, Fixed const & rhs)
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	setRawBits(other.getRawBits());
+	this->setRawBits(other.getRawBits());
 	return (*this);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	Fixed::rawbits = raw;
+	this->_rawbits = raw;
 }
 
 int Fixed::getRawBits() const
 {
-	return (rawbits);
+	return (_rawbits);
 }

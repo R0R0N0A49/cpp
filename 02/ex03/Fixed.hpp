@@ -20,6 +20,8 @@ class Fixed
 		void	setRawBits(int const raw);
 		static float	max(Fixed &a, Fixed &b);
 		static float	min(Fixed &a, Fixed &b);
+		static float	max(Fixed const &a, Fixed const &b);
+		static float	min(Fixed const &a, Fixed const &b);
 
 	// overload operators
 		Fixed & operator= (Fixed const & src);
@@ -39,8 +41,8 @@ class Fixed
 		Fixed &	operator-- ();
 
 	private:
-		int	rawbits;
-		int constvalus;
+		int	_rawbits;
+		static const int _constvalus = 8;
 };
 
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs);

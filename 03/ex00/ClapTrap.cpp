@@ -1,11 +1,21 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("default"), _hitPoint(10), _energyPoint(10), _attack(0), _maxHeal(_hitPoint) {
-	std::cout << "default constructor called\n";
+ClapTrap::ClapTrap() {
+	this->_name = "default";
+	this->_hitPoint = 10;
+	this->_energyPoint = 10;
+	this->_attack = 0;
+	this->_maxHeal = _hitPoint;
+	std::cout << Blue << "default constructor called\n" << Reset;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attack(0), _maxHeal(_hitPoint) {
-	std::cout << "clapTrap name constructor called\n";
+ClapTrap::ClapTrap(std::string name) {
+	this->_name = name;
+	this->_hitPoint = 10;
+	this->_energyPoint = 10;
+	this->_attack = 0;
+	this->_maxHeal = this->_hitPoint;
+	std::cout << Blue << "clapTrap name constructor called\n" << Reset;
 }
 
 ClapTrap::ClapTrap(ClapTrap &src) {
@@ -14,16 +24,17 @@ ClapTrap::ClapTrap(ClapTrap &src) {
 	this->_maxHeal = src._maxHeal;
 	this->_energyPoint = src._energyPoint;
 	this->_attack = src._attack;
-	std::cout << "ClapTrap copy constructor called\n";
+	std::cout << Blue << "ClapTrap copy constructor called\n" << Reset;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& src) {
-	this->_name = src._name;
-	this->_hitPoint = src._hitPoint;
-	this->_maxHeal = src._maxHeal;
-	this->_energyPoint = src._energyPoint;
-	this->_attack = src._attack;
-	std::cout << "ClapTrap operator= called\n";
+	if (this != &src) {
+		this->_name = src._name;
+		this->_hitPoint = src._hitPoint;
+		this->_maxHeal = src._maxHeal;
+		this->_energyPoint = src._energyPoint;
+		this->_attack = src._attack;
+	}
 	return (*this);
 }
 
@@ -39,7 +50,7 @@ std::ostream& operator<< (std::ostream & o, ClapTrap const & src)
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "clapTrap destructor called\n";
+	std::cout << Red << "clapTrap destructor called\n" << Reset;
 }
 
 void ClapTrap::attack(const std::string &target) {

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ClapTrap.hpp"
+#define B "\033[1;38;2;100;100;100m"
+#define R "\033[1;38;2;250;0;150m"
 
 class ScavTrap : public ClapTrap
 {
