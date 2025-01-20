@@ -1,5 +1,5 @@
-NAME = game
-SRCS = main.cpp AMateria.cpp
+NAME = Materia
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 CPP = c++

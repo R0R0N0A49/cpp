@@ -5,7 +5,7 @@ WrongCat::WrongCat() {
 	std::cout << WrongCatColor << "WrongCat constructor called\n" << Reset;
 }
 
-WrongCat::WrongCat(const WrongCat &copy) {
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy) {
 	this->_type = copy.getType();
 	std::cout << WrongCatColor << "WrongCat copy constructor called\n" << Reset;
 }

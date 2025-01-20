@@ -5,7 +5,7 @@ WrongAnimal::WrongAnimal() {
 	std::cout << WrongAnimalColor << "WrongAnimal constructor called\n" << Reset;
 }
 
-WrongAnimal::WrongAnimal(WrongAnimal &copy) {
+WrongAnimal::WrongAnimal(WrongAnimal const &copy) {
 	this->_type = copy.getType();
 	std::cout << WrongAnimalColor << "WrongAnimal copy constructor called\n" << Reset;
 }

@@ -1,34 +1,31 @@
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("cure")
-{
-	std::cout << "default Cure constructor called\n";
+Cure::Cure() : AMateria("cure") {
+	std::cout << CureColor << "default Cure constructor called\n" << reset;
 }
 
-Cure::Cure(const Cure& other) : AMateria("cure")
+Cure::Cure(const Cure& other) : AMateria(other.getType())
 {
-	std::cout << "copy Cure constructor called\n";
+	std::cout << CureColor << "copy Cure constructor called\n" << reset;
 }
 
 Cure& Cure::operator=(Cure const& other)
 {
-	if (this != &other)
+	if (this->getType() != other.getType())
 		this->_type = other._type;
 	return *this;
 }
 
-Cure::~Cure()
-{
-	std::cout << "destructor Cure destructor called\n";
+Cure::~Cure() {
+	std::cout << CureColor << "Cure destructor called\n" << reset;
 }
 
-Cure& Cure::Clone() const
-{
-	return new Cure();
+Cure* Cure::clone() const {
+	return new Cure(*this);
 }
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals "<< target.gatName() << "’s wounds *\n";
+	std::cout << CureColor << "* heals "<< target.getName() << "’s wounds *\n" << reset;
 }
 

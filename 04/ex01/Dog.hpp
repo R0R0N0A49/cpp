@@ -7,14 +7,14 @@ class Dog : public Animal
 	public:
 		Dog();
 		Dog(const Dog& copy);
-		Dog& operator=(const Dog& other);
+		Dog& operator=(Dog const & other);
 		~Dog();
 
 	public:
 		void makeSound(void) const;
+		void printAll() const;
 		void setString(int, std::string);
-		void printAll();
 
 	private:
-		Brain* _idea;
+		Brain* _ideas;
 };

@@ -2,33 +2,31 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << "default Ice constructor called\n";
+	std::cout << IceColor << "default Ice constructor called\n" << reset;
 }
 
-Ice::Ice(const Ice& other) : AMateria("ice")
+Ice::Ice(const Ice& other) : AMateria(other.getType())
 {
-	std::cout << "copy Ice constructor called\n";
+	std::cout << IceColor << "copy Ice constructor called\n" << reset;
 }
 
 Ice& Ice::operator=(Ice const& other)
 {
-	if (this != &other)
+	if (this->getType() != other.getType())
 		this->_type = other._type;
 	return *this;
 }
 
-Ice::~Ice()
-{
-	std::cout << "destructor Ice destructor called\n";
+Ice::~Ice() {
+	std::cout << IceColor << "Ice destructor called\n" << reset;
 }
 
-Ice& Ice::Clone() const
-{
-	return new Ice();
+Ice *Ice::clone() const {
+	return (new Ice(*this));
 }
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at" << target.getName() << "*\n";
+	std::cout << IceColor << "* shoots an ice bolt at " << target.getName() << " *\n" << reset;
 }
 

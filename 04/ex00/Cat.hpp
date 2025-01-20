@@ -6,8 +6,8 @@ class Cat : public Animal
 {
 	public:
 		Cat();
-		Cat(const Cat& copy);
-		Cat operator=(Cat& other);
+		Cat(Cat const& copy);
+		Cat& operator=(Cat const &other);
 		~Cat();
 
 	public:

@@ -11,8 +11,8 @@ class Animal
 	public:
 		Animal();
 		Animal(std::string type);
-		Animal(Animal& copy);
-		Animal& operator=(Animal& other);
+		Animal(Animal const& copy);
+		Animal operator=(Animal& other);
 		virtual ~Animal();
 
 	public:

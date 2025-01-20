@@ -7,7 +7,7 @@ class Dog : public Animal
 	public:
 		Dog();
 		Dog(const Dog& copy);
-		Dog operator=(Dog& other);
+		Dog& operator=(Dog const & other);
 		~Dog();
 
 	public:

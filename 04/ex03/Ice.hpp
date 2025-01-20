@@ -1,6 +1,10 @@
 #pragma once
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
+#define IceColor "\033[1;38;2;0;150;195m" // Blue
+
+class ICharacter;
 
 class Ice : public AMateria
 {
@@ -11,6 +15,6 @@ class Ice : public AMateria
 		~Ice();
 
 	public:
-		Ice& Clone() const;
+		Ice* clone() const;
 		void use(ICharacter& target);
 };
