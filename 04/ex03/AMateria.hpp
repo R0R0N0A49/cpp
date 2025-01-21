@@ -3,7 +3,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 #define reset "\033[1;m" // white
-#define MateriaColor "\033[1;38;2;195;150;0m" // gold
+#define MateriaColor "\033[1;38;2;255;170;50m" // yellow
 
 class ICharacter;
 
@@ -11,11 +11,11 @@ class AMateria
 {
 	protected:
 		std::string _type;
+
+	public:
 		AMateria();
 		AMateria(std::string const & type);
 		AMateria(AMateria const & other);
-
-	public:
 		AMateria& operator=(AMateria const & other);
 		virtual ~AMateria();
 

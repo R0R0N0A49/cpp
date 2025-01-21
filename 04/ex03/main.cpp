@@ -1,30 +1,73 @@
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 
 int main()
 {
-	Ice* ice = new Ice();
+	// creation des save AMateria
+	IMateriaSource* src = new MateriaSource();
 	std::cout << std::endl;
-	Cure* cure = new Cure();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	std::cout << std::endl;
-	ICharacter* me = new Character("me");
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	std::cout << std::endl;
-	me->equip(ice);
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	// creation des Character
 	std::cout << std::endl;
-	me->equip(cure);
+	ICharacter* bob = new Character("bob");
 	std::cout << std::endl;
-	ICharacter * you = new Character("you");
+	ICharacter* kevin = new Character("kevin");
 	std::cout << std::endl;
-	me->use(0, *you);
+	AMateria* tmp;
 	std::cout << std::endl;
-	me->use(1, *you);
+
+	tmp = src->createMateria("ice");
 	std::cout << std::endl;
-//	delete ice;
-//	std::cout << std::endl;
-//	delete cure;
-//	std::cout << std::endl;
-	delete me;
+	bob->equip(tmp);
+	tmp = src->createMateria("cure");
 	std::cout << std::endl;
-	delete you;
+	bob->equip(tmp);
+
+	tmp = src->createMateria("cure");
+	std::cout << std::endl;
+	kevin->equip(tmp);
+	tmp = src->createMateria("ice");
+	std::cout << std::endl;
+	kevin->equip(tmp);
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	// test ICharacter
+	bob->use(0, *kevin);
+	std::cout << std::endl;
+
+	bob->unequip(0);
+	std::cout << std::endl;
+
+	kevin->use(1, *bob);
+	std::cout << std::endl;
+
+	kevin->unequip(1);
+	std::cout << std::endl;
+
+	kevin->use(0, *kevin);
+	std::cout << std::endl;
+
+	bob->use(1, *bob);
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	// delete
+	delete bob;
+	std::cout << std::endl;
+	delete kevin;
+	std::cout << std::endl;
+	delete src;
+	return 0;
 }

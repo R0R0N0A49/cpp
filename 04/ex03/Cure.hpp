@@ -2,7 +2,7 @@
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
-#define CureColor "\033[1;38;2;0;195;150m" // green
+#define CureColor "\033[1;38;2;55;255;150m" // green
 
 class ICharacter;
 

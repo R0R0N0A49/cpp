@@ -2,7 +2,7 @@
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
-#define IceColor "\033[1;38;2;0;150;195m" // Blue
+#define IceColor "\033[1;38;2;0;150;255m" // Blue
 
 class ICharacter;
 

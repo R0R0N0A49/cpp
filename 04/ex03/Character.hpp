@@ -1,10 +1,16 @@
 #pragma once
 
 #include "ICharacter.hpp"
-#define CharacterColor "\033[1;38;2;100;85;150m" // purple
+#define CharacterColor "\033[1;38;2;100;255;95m" // purple
 
 class Character : public ICharacter
 {
+	protected:
+		AMateria*	_unequip[1024];
+		AMateria*	_inventory[4];
+		std::string _name;
+		int			_index;
+
 	public:
 		Character();
 		Character(std::string name);
