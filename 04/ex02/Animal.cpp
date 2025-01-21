@@ -23,7 +23,7 @@ Animal::~Animal()
 	std::cout << AnimalColor << "Animal destructor called\n" << Reset;
 }
 
-Animal Animal::operator=(Animal& other)
+Animal &Animal::operator=(Animal& other)
 {
 	this->_type = other.getType();
 	std::cout << AnimalColor << "Animal operator called\n" << Reset;

@@ -9,6 +9,7 @@ class Cat : public Animal
 		Cat(Cat const& copy);
 		Cat& operator=(Cat const &other);
 		~Cat();
+	public:
 		void makeSound(void) const;
 		void printAll() const;
 		void setString(int, std::string);
