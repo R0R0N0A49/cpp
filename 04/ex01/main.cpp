@@ -2,26 +2,29 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-//int main()
-//{
-//	Dog basic;
-//	basic.setString(1, "I do not want to set the world on fire");
-//	{
-//		Dog tmp;
-//		tmp = (basic);
-//		tmp.setString(0, "Hello World");
-//		std::cout << "BOB Brain : \n";
-//		tmp.printAll();
-//		std::cout << std::endl;
-//	}
-//	std::cout << "Default Brain : \n";
-//	basic.printAll();
-//	std::cout<< std::endl;
-//}
-
 int main(void)
 {
-	std::cout << "\033[1;38;2;200;90;50m" << "##########-Test-Brain-for-Cat-##########\n\n";
+	std::cout << "\033[1;38;2;200;90;50m" << "###########-Array-of-Animals-###########\n\n";
+	{
+		int j = 10;
+		Animal* tmp[j];
+		for (int i = 0; i < j; i++){
+			if (i % 2 == 0)
+				tmp[i] = new Cat();
+			else
+				tmp[i] = new Dog();
+		}
+
+		for (int i = 0; i < j; i++){
+			tmp[i]->makeSound();
+		}
+
+		for (int i = 0; i < j; i++){
+			delete tmp[i];
+		}
+
+	}
+	std::cout << "\n\033[1;38;2;200;90;50m" << "##########-Test-Brain-for-Cat-##########\n\n";
 	{
 		// assignation de valeur
 

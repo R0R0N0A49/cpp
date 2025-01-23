@@ -9,7 +9,7 @@ MateriaSource::MateriaSource() {
 
 MateriaSource::MateriaSource(const MateriaSource &other) {
 	for (int i = 0; i < 4 ; i++)
-		this->_stock[i] = NULL;
+		this->_stock[i] = other._stock[i];
 	this->_idx = 0;
 	std::cout << MSColor << "MateriaSource name constructor called\n" << reset;
 }

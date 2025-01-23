@@ -18,6 +18,7 @@ Character::Character(std::string name) {
 
 Character::Character(const Character &other) {
 	this->_index = 0;
+	(void)other;
 	std::cout << CharacterColor << "Character copy constructor called\n" << reset;
 }
 

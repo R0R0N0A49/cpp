@@ -14,7 +14,7 @@ Dog::Dog(const Dog &copy) : Animal(copy)
 }
 
 Dog& Dog::operator=(Dog const &other) {
-	if (this != &other) {
+	if (this != &other)
 		this->_type = other.getType();
 		*this->_ideas = *other._ideas;
 		std::cout << DogCopyColor << "Dog copy operator called\n" << Reset;

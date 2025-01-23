@@ -27,7 +27,8 @@ Brain &Brain::operator=(Brain const & other)
 
 void Brain::setString(int i, std::string copy)
 {
-	this->_ideas[i] = copy;
+	if (i >= 0 && i <= 99)
+		this->_ideas[i] = copy;
 }
 
 void Brain::printAll() const
