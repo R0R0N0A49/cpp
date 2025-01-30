@@ -37,6 +37,18 @@ std::string Bureaucrat::getName() const {
 	return this->_name;
 }
 
+void Bureaucrat::downGrade() {
+	if (this->_grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade += 1;
+}
+
+void Bureaucrat::upGrade() {
+	if (this->_grade - 1 <= 0)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade -= 1;
+}
+
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& obj) {
 	o << obj.getName() <<  ", bureaucrat grade " << obj.getGrade() << std::endl;
 	return o;
