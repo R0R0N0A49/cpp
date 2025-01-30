@@ -1,5 +1,5 @@
-NAME = bureaucrat
-SRCS = main.cpp Bureaucrat.cpp
+NAME = form
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 CPP = c++
