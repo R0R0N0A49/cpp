@@ -1,5 +1,5 @@
-NAME = Aform
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+NAME = Intern
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 CPP = c++
