@@ -1,17 +1,20 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverte::ScalarConverte() {
+ScalarConverter::ScalarConverter() {
 }
 
-ScalarConverte::ScalarConverte(const ScalarConverte &copy) {
+ScalarConverter::ScalarConverter(const ScalarConverter &copy) {
+	(void)copy;
 }
 
-ScalarConverte::~ScalarConverte() {
+ScalarConverter::~ScalarConverter() {
 }
 
-ScalarConverte ScalarConverte::operator=(const ScalarConverte &copy) {
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy) {
+	(void)copy;
+	return *this;
 }
 
-void ScalarConverte::convert(std::string src) {
-
+void ScalarConverter::convert(std::string src) {
+	(void)src;
 }

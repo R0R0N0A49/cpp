@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-class ScalarConverte {
+class ScalarConverter {
 	protected:
-		ScalarConverte();
-		ScalarConverte(ScalarConverte const& copy);
-		ScalarConverte& operator=(ScalarConverte const& copy);
-		~ScalarConverte();
+		ScalarConverter();
+		ScalarConverter(ScalarConverter const& copy);
+		ScalarConverter& operator=(ScalarConverter const& copy);
+		~ScalarConverter();
 	public:
 		static void convert(std::string src);
 };

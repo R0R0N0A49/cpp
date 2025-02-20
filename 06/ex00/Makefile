@@ -1,4 +1,4 @@
-NAME = Intern
+NAME = convert
 SRCS = main.cpp ScalarConverter.cpp parsing.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
