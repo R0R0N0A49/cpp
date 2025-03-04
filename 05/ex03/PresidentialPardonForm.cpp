@@ -1,21 +1,21 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : Form("Form_default", 25, 5) {
-	std::cout << "PresidentialPardonForm default constructor called\n";
+	std::cout << calPre << "PresidentialPardonForm default constructor called\n" << reset;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const & target) : Form("Form_" + target, 25, 5){
 	this->_target = target;
-	std::cout << "PresidentialPardonForm constructor called\n";
+	std::cout << calPre << "PresidentialPardonForm constructor called\n" << reset;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & other) : Form(other.getName(), other.getGdSign(), other.getGdExc()) {
 	this->_target = other._target;
-	std::cout << "PresidentialPardonForm copy constructor called\n";
+	std::cout << calPre << "PresidentialPardonForm copy constructor called\n" << reset;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-	std::cout << "PresidentialPardonForm destructor called\n";
+	std::cout << calPre << "PresidentialPardonForm destructor called\n" << reset;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm const& other) {
@@ -28,6 +28,8 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 
 bool PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
+	if (!this->_isSign)
+		throw Form::IsNotSignedExc();
 	if (executor.getGrade() <= this->getGdExc()) {
 		std::cout << this->_target << ", you are pardoned by Zaphod Beeblebrox\n";
 		return true;

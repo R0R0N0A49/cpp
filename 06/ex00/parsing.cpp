@@ -32,3 +32,9 @@ bool IsChar(std::string src) {
 		return true;
 	return false;
 }
+
+bool IsSpecial(std::string src) {
+	if (src == "-inf" || src == "+inf" || src == "nan")
+		return true;
+	return false;
+}

@@ -28,6 +28,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const& o
 
 bool RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+	if (!this->_isSign)
+		throw Form::IsNotSignedExc();
 	if (executor.getGrade() <= this->getGdExc()) {
 		int i  = std::rand() % 2;
 		if (i == 1)

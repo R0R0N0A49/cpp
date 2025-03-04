@@ -47,6 +47,16 @@ class Form{
 			return ("\033[1;38;2;200;50;75mYour current rank doesn't allow you to execute this\033[0m");
 		}
 	};
+	class IsNotSignedExc : public std::exception{
+		const char *what() const throw() {
+			return ("\033[1;38;2;200;50;75mThis form must be signed before execution\033[0m");
+		}
+	};
+	class IsAlreadySignedExc : public std::exception{
+		const char *what() const throw() {
+			return ("\033[1;38;2;200;50;75mThis form is already signed\033[0m");
+		}
+	};
 };
 
 std::ostream & operator<<( std::ostream & o, Form const & obj);

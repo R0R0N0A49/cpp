@@ -1,6 +1,8 @@
 #pragma once
 
 #include "AForm.hpp"
+#define calPre "\033[1;38;2;205;155;105m"
+
 
 class PresidentialPardonForm : public Form {
 	public:

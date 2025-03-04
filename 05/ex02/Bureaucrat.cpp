@@ -59,8 +59,6 @@ void Bureaucrat::signForm(Form& src) {
 void Bureaucrat::executeForm(Form const& form) const {
 	if (form.execute(*this))
 		std::cout << colC << this->_name << " executed " << form.getName() << std::endl << reset;
-	else
-		std::cout << colC << this->_name << " couldn't execute " << form.getName() << " because is already execute" << std::endl << reset;
 }
 
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& obj) {

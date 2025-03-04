@@ -2,15 +2,17 @@
 
 int main() {
 	std::cout << "\033[1;33m##########-test-constructor-##########" << reset << std::endl << std::endl;
-	try {
-		Bureaucrat tmp("bob", 59);
-		Form form("form 1", 29, 10);
-		Form fom("form 2", 0, 0);
-		tmp.signForm(form);
-		Bureaucrat tmp2("bob", 14);
-		tmp2.signForm(form);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+	{
+		try {
+			Bureaucrat tmp("bob", 59);
+			Form form("form 1", 29, 10);
+			Form fom("form 2", 0, 0);
+			tmp.signForm(form);
+			Bureaucrat tmp2("bob", 14);
+			tmp2.signForm(form);
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 	std::cout << std::endl << "\033[1;33m############-test--signed-############" << reset << std::endl << std::endl;
 	try {

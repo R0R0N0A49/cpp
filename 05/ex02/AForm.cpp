@@ -51,7 +51,7 @@ bool Form::beSigned(Bureaucrat* src) {
 	if (src->getGrade() > this->_gdSign)
 		throw Form::GradeTooLowSign();
 	if (this->_isSign)
-		return false;
+		throw Form::IsAlreadySignedExc();
 	this->_isSign = true;
 	return true;
 }

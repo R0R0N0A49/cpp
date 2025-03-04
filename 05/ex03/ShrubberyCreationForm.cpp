@@ -28,6 +28,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 bool ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
+	if (!this->_isSign)
+		throw Form::IsNotSignedExc();
 	if (executor.getGrade() <= this->getGdExc()) {
 		std::string tmp = _target + "_shrubbery";
 		std::ofstream _output(tmp.c_str());

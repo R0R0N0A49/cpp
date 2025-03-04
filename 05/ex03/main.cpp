@@ -8,7 +8,6 @@ int main() {
 
 	try{
 		form = intern.makeForm("presidential pardon", "bob");
-		bureaucrat.executeForm(*form);
 		bureaucrat.signForm(*form);
 		bureaucrat.executeForm(*form);
 		delete form;
