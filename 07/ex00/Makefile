@@ -1,4 +1,4 @@
-NAME = RealType
+NAME = whatever
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
