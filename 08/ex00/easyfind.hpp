@@ -3,19 +3,20 @@
 #include <iostream>
 #include <algorithm>
 
-class NotFind : std::exception {
+class NotFind : public std::exception {
 	const char * what() const throw() {
-		return ("Value not find in array\n");
+		return ("\033[1;38;2;200;50;75mValue not found in array\033[0m");
 	};
 };
 
 template<typename T>
-int easyfind(T &tab, int target) {
+void easyfind(T &tab, int target) {
 	typename T::iterator it;
 	it = std::find(tab.begin(), tab.end(), target);
 	if (it != tab.end()) {
-		return it;
+		std::cout << "\033[1;38;2;50;200;75mValue found in container\033[0m" << std::endl;
+		return ;
 	}
-	return -1;
+	throw NotFind();
 }
 
