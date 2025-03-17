@@ -26,9 +26,16 @@ static void	promptInt(std::string src) {
 
 	if (num > 32 && num < 127)
 		std::cout << "char   : " << static_cast<char>(num) << std::endl;
+	else if (num < 0 || num > 127)
+		std::cout << "char   : impossible" << std::endl;
 	else
 		std::cout << "char   : non printable" << std::endl;
-	std::cout << "int    : " << static_cast<int>(num) << std::endl;
+
+	if (num >= MININT && num <= MAXINT)
+		std::cout << "int    : " << static_cast<int>(num) << std::endl;
+	else
+		std::cout << "int    : impossible" << std::endl;
+
 	std::cout << "double : " << num << std::endl;
 	std::cout << "float  : " << static_cast<float>(num) << "f" << std::endl;
 }
@@ -38,9 +45,16 @@ static void	promptFloat(std::string src) {
 
 	if (num > 32 && num < 127)
 		std::cout << "char   : " << static_cast<char>(num) << std::endl;
+	else if (num < 0 || num > 127)
+		std::cout << "char   : impossible" << std::endl;
 	else
 		std::cout << "char   : non printable" << std::endl;
-	std::cout << "int    : " << static_cast<int>(num) << std::endl;
+
+	if (num >= MININT && num <= MAXINT)
+		std::cout << "int    : " << static_cast<int>(num) << std::endl;
+	else
+		std::cout << "int    : impossible" << std::endl;
+
 	std::cout << "double : " << static_cast<double>(num) << std::endl;
 	std::cout << "float  : " << num << "f" << std::endl;
 }
@@ -49,10 +63,17 @@ static void	promptchar(std::string src) {
 	int num = src[0];
 
 	if (num > 32 && num < 127)
-		std::cout << "char   : " << src[0] << std::endl;
+		std::cout << "char   : " << static_cast<char>(num) << std::endl;
+	else if (num < 0 || num > 127)
+		std::cout << "char   : impossible" << std::endl;
 	else
 		std::cout << "char   : non printable" << std::endl;
-	std::cout << "int    : " << num << std::endl;
+
+	if (num >= MININT && num <= MAXINT)
+		std::cout << "int    : " << static_cast<int>(num) << std::endl;
+	else
+		std::cout << "int    : impossible" << std::endl;
+
 	std::cout << "double : " << static_cast<double>(num) << std::endl;
 	std::cout << "float  : " << static_cast<float>(num) << "f" << std::endl;
 }
