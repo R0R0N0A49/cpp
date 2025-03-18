@@ -48,6 +48,44 @@ unsigned int Span::shortestSpan() {
 	if (_list.size() < 2)
 		throw NoNumbersException();
 
-	unsigned int save;
+	long save = -1;
+	std::list<unsigned int>::iterator base = _list.begin();
 
+	for (; base != _list.end(); base++)
+	{
+		std::list<unsigned int>::iterator it = base;
+		++it;
+		for (; it != _list.end(); it++)
+		{
+			unsigned int d = (*base > *it) ? (*base - *it) : *it - *base;
+			if (d < save)
+				save = d;
+			else if (save == -1)
+				save = d;
+		}
+	}
+	return save;
+}
+
+unsigned int Span::longestSpan() {
+	if (_list.size() < 2)
+		throw NoNumbersException();
+
+	long save = -1;
+	std::list<unsigned int>::iterator base = _list.begin();
+
+	for (; base != _list.end(); base++)
+	{
+		std::list<unsigned int>::iterator it = base;
+		++it;
+		for (; it != _list.end(); it++)
+		{
+			unsigned int d = (*base > *it) ? (*base - *it) : *it - *base;
+			if (d > save)
+				save = d;
+			else if (save == -1)
+				save = d;
+		}
+	}
+	return save;
 }

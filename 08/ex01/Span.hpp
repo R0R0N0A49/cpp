@@ -12,7 +12,7 @@ class Span {
 		void addNumber(std::list<unsigned int> i);
 		void addNumber(unsigned int i);
 		unsigned int shortestSpan();
-//		unsigned int longestSpan();
+		unsigned int longestSpan();
 
 	private:
 		Span();
