@@ -44,6 +44,43 @@ void Span::addNumber(std::list<unsigned int> i) {
 	}
 }
 
+unsigned int Span::shortestSpan()
+{
+	if (_list.size() < 2)
+		throw NoNumbersException();
+	long save = -1;
+	std::list<unsigned int> tmp = _list;
+	tmp.sort();
+	std::list<unsigned int>::iterator base = tmp.begin();
+	std::list<unsigned int>::iterator it = ++tmp.begin();
+
+	for (; it != tmp.end(); it++)
+	{
+		if (save == -1)
+			save = *it - *base;
+		else if (*it - *base < save)
+			save = *it - *base;
+		else if (save == 0)
+			break ;
+		base++;
+	}
+	return save;
+}
+
+
+unsigned int Span::longestSpan()
+{
+	if (_list.size() < 2)
+		throw NoNumbersException();
+	std::list<unsigned int> tmp = _list;
+	tmp.sort();
+	std::list<unsigned int>::iterator base = tmp.begin();
+	std::list<unsigned int>::iterator it = --tmp.end();
+
+	return *it - *base;
+}
+
+/*
 unsigned int Span::shortestSpan() {
 	if (_list.size() < 2)
 		throw NoNumbersException();
@@ -67,6 +104,7 @@ unsigned int Span::shortestSpan() {
 	return save;
 }
 
+
 unsigned int Span::longestSpan() {
 	if (_list.size() < 2)
 		throw NoNumbersException();
@@ -89,3 +127,4 @@ unsigned int Span::longestSpan() {
 	}
 	return save;
 }
+*/
