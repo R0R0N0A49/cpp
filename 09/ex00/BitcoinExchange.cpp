@@ -1,50 +1,84 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() {
-	std::ifstream file("data.csv");
-	if (!file.is_open()) {
-		throw BadFile();
-	}
-
+BitcoinExchange::BitcoinExchange(std::string file) {
+	(void)file;
+	std::ifstream data("data.csv");
 	std::string tmp;
-	file >> tmp;
-	for (file >> tmp; !tmp.empty(); file >> tmp) {
-		_ftSplit(tmp);
-		tmp = "";
+	std::pair<std::string, std::string> pair;
+	_file.open(file.c_str());
+
+	for (;std::getline(data, tmp);)
+	{
+		if (_checkLineData(tmp))
+		{
+			pair = _split(tmp, ',');
+			_data[_getTime(pair.first)] = _getFloat(pair.second);
+		}
 	}
 }
 
-BitcoinExchange::~BitcoinExchange() {
+BitcoinExchange::~BitcoinExchange()
+{
+
 }
 
-double BitcoinExchange::_ftSplit(std::string src, int i) {
-	std::string first;
-	std::string second;
-
-	if (src == "start")
-		return -1;
-	std::string::iterator iter = src.begin();
-	for (; *iter != ',' && *iter != '|' && iter != src.end() ; iter++ ) {
-		if (*iter != '-')
-			first += *iter;
-	}
-	if (first.empty())
-		throw DataError();
-	if (iter != src.end())
-		iter++;
-	for (; iter != src.end(); iter++)
-		second += *iter;
-	if (second.empty())
-		throw DataError();
-	if (i == 0) {
-		_date.push_back(static_cast<long>(strtod(first.c_str(), NULL)));
-		_value.push_back(strtof(second.c_str(), NULL));
-		return 0;
-	}
-	if (i == 1)
-		return strtod(first.c_str(), NULL);
-	if (i == 2)
-		return strtod(second.c_str(), NULL);
-	return -1;
+time_t	BitcoinExchange::_getTime(std::string src) {
+	tm tmp;
+	tmp.tm_year = strtod(src.c_str(), NULL);
+	tmp.tm_mon = strtod((&src[5]), NULL);
+	tmp.tm_mday = strtod((&src[8]), NULL);
+	time_t rsl = mktime(&tmp);
+	return rsl;
 }
 
+float	BitcoinExchange::_getFloat(std::string src) {
+	return strtof(src.c_str(), NULL);
+}
+
+bool	BitcoinExchange::_checkLineData(std::string src)
+{
+	regex_t test;
+	std::string type = "^[0,9](4)-[0,9](2)-[0,9](2) , [+-]?(\\d+(\\.\\d*)?|\\.\\d+)$";
+	int i = regcomp(&test, type.c_str(), 0);
+	if (i)
+		return false;
+	i = regexec(&test, src.c_str(), src.size(), NULL, 0);
+	if (i)
+		return true;
+	return false;
+}
+
+void BitcoinExchange::readFile() {
+	std::pair<std::string, std::string> pair;
+	std::string tmp;
+
+	for (;std::getline(_file, tmp);)
+	{
+		if (_checkLineData(tmp))
+		{
+			pair = _split(tmp, '|');
+//			_data[_getValue(pair.first)] ;
+
+		}
+	}
+}
+
+std::pair<std::string, std::string> BitcoinExchange::_split(std::string src, char c) {
+	std::string first, second;
+	bool foundDelimiter = false;
+
+	for (std::string::const_iterator it = src.begin(); it != src.end(); ++it) {
+		if (*it == c && !foundDelimiter) {
+			foundDelimiter = true;
+			continue;
+		}
+
+		if (*it != ' ') {
+			if (!foundDelimiter)
+				first += *it;
+			else
+				second += *it;
+		}
+	}
+	return std::make_pair(first, second);
+}
