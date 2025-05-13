@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 			throw BitcoinExchange::BadImput();
 		std::cout << std::fixed << std::setprecision(2);
 		BitcoinExchange test(argv[1]);
-//		test.readFile();
+		test.readFile();
 	} catch (std::exception& e){
 		std::cout << RED << e.what() << RESET;
 	}

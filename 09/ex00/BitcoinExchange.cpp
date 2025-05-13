@@ -7,13 +7,13 @@ BitcoinExchange::BitcoinExchange(std::string file) {
 	std::pair<std::string, std::string> pair;
 	_file.open(file.c_str());
 
+	std::getline(data, tmp);
 	for (;std::getline(data, tmp);)
 	{
-		if (_checkLineData(tmp))
-		{
-			pair = _split(tmp, ',');
-			_data[_getTime(pair.first)] = _getFloat(pair.second);
-		}
+		if (!_checkLineData(tmp))
+			throw DataError();
+		pair = _split(tmp, ',');
+		_data[_getTime(pair.first)] = _getFloat(pair.second);
 	}
 }
 
@@ -38,14 +38,36 @@ float	BitcoinExchange::_getFloat(std::string src) {
 bool	BitcoinExchange::_checkLineData(std::string src)
 {
 	regex_t test;
-	std::string type = "^[0,9](4)-[0,9](2)-[0,9](2) , [+-]?(\\d+(\\.\\d*)?|\\.\\d+)$";
+	std::string type = "^[0-9]{4}-[0-9]{2}-[0-9]{2},(0|[0-9]+(\\.[0-9]+)?)$";
+
+	int i = regcomp(&test, type.c_str(), REG_EXTENDED);
+	if (i)
+		return false;
+
+	i = regexec(&test, src.c_str(), 0, NULL, 0);
+	regfree(&test);
+
+	if (i != REG_NOMATCH)
+		return true;
+
+	return false;
+}
+
+bool	BitcoinExchange::_checkLineInput(std::string src)
+{
+	std::cout << "src == {" << src << "}";
+	regex_t test;
+	std::string type = "^[0-9]{4}-[0-9]{2}-[0-9]{2} \\| (0|([0-9]{1-3}|1000))$";
+//	std::string type = "^\\d(4)-\\d(2)-\\d(2) \\| \\+?([0-9](4))$";
 	int i = regcomp(&test, type.c_str(), 0);
 	if (i)
 		return false;
 	i = regexec(&test, src.c_str(), src.size(), NULL, 0);
-	if (i)
+	std::cout << ", i = " << i << std::endl;
+	if (i != REG_NOMATCH)
 		return true;
-	return false;
+
+	throw badLineInFile();
 }
 
 void BitcoinExchange::readFile() {
@@ -54,11 +76,12 @@ void BitcoinExchange::readFile() {
 
 	for (;std::getline(_file, tmp);)
 	{
-		if (_checkLineData(tmp))
-		{
+		try {
+			_checkLineInput(tmp);
 			pair = _split(tmp, '|');
-//			_data[_getValue(pair.first)] ;
-
+			_data[_getTime(pair.first)] = strtof(pair.second.c_str(), NULL);
+		} catch (std::exception &e) {
+			std::cout << e.what() << tmp << std::endl;
 		}
 	}
 }

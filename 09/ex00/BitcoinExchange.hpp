@@ -26,6 +26,7 @@ class BitcoinExchange {
 
 	private:
 		bool	_checkLineData(std::string src);
+		bool	_checkLineInput(std::string src);
 		std::pair<std::string, std::string> _split(std::string src, char c);
 		time_t	_getTime(std::string src);
 		float	_getFloat(std::string src);
