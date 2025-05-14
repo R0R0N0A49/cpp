@@ -86,7 +86,7 @@ void	BitcoinExchange::readFile() {
 			pair = _split(tmp, '|');
 			_getValue(_getTime(pair.first), strtof(pair.second.c_str(), 0), pair.first);
 		} catch (std::exception &e) {
-			std::cout << RED << e.what() << RESET << tmp << std::endl;
+			std::cerr << RED << e.what() << RESET << tmp << std::endl;
 		}
 	}
 }
@@ -103,7 +103,7 @@ void BitcoinExchange::_getValue(time_t date, int nmbBitcoin, std::string realDat
 			if (it->first <= date)
 				break ;
 		}
-		if (it == _data.begin())
+		if (it == _data.begin() && it->first > date)
 			_printValue(realDate, nmbBitcoin, 0);
 		else
 			_printValue(realDate, nmbBitcoin, it->second);

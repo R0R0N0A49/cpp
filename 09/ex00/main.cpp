@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 		BitcoinExchange test(argv[1]);
 		test.readFile();
 	} catch (std::exception& e){
-		std::cout << RED << e.what() << RESET;
+		std::cerr << RED << e.what() << RESET;
 	}
 	std::cout.unsetf(std::ios::fixed);
 //	close(11);
