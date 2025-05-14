@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <regex.h>
 #include <ctime>
+#include <cstring>
 #include <utility>
 
 #define RED "\033[1;38;2;200;50;25m"
@@ -30,7 +31,8 @@ class BitcoinExchange {
 		std::pair<std::string, std::string> _split(std::string src, char c);
 		time_t	_getTime(std::string src);
 		float	_getFloat(std::string src);
-		void	_getValue(std::string); // conparer les time_t pour trouver la date la plus recente
+		void	_getValue(time_t date, int nmbBitcoin, std::string realDate); // conparer les time_t pour trouver la date la plus recente
+		void	_printValue(std::string date, int nmbBitcoin, float value);
 
 	public:
 
@@ -53,7 +55,13 @@ class BitcoinExchange {
 		class badLineInFile : public std::exception
 		{
 			const char* what() const throw() {
-				return "error, Bad line in your file : ";
+				return "Error, Bad line in your file : ";
+			}
+		};
+		class ErrorRegcomp : public std::exception
+		{
+			const char* what() const throw() {
+				return "An error occurred during regex compilation\n";
 			}
 		};
 };
