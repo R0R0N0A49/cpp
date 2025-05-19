@@ -60,7 +60,7 @@ bool	BitcoinExchange::_checkLineData(std::string src)
 bool	BitcoinExchange::_checkLineInput(std::string src)
 {
 	regex_t test;
-	std::string type = "^[0-9]{4}-[0-9]{2}-[0-9]{2} \\| (0|([0-9]{1,3}|1000))$";
+	std::string type = "^[0-9]{4}-[0-9]{2}-[0-9]{2} \\| (0|([0-9]{1,3}(\\.[0-9]+)?|1000))$";
 
 	int i = regcomp(&test, type.c_str(), REG_EXTENDED);
 	if (i)
@@ -91,7 +91,7 @@ void	BitcoinExchange::readFile() {
 	}
 }
 
-void BitcoinExchange::_getValue(time_t date, int nmbBitcoin, std::string realDate) {
+void BitcoinExchange::_getValue(time_t date, float nmbBitcoin, std::string realDate) {
 	if (!date)
 		return;
 	if (nmbBitcoin <= 0)
@@ -110,8 +110,18 @@ void BitcoinExchange::_getValue(time_t date, int nmbBitcoin, std::string realDat
 	}
 }
 
-void BitcoinExchange::_printValue(std::string date, int nmbBitcoin, float value) {
-		std::cout << "to " << date << " for " << nmbBitcoin << " bitcoin : " << nmbBitcoin * value << "$" << std::endl;
+void BitcoinExchange::_printValue(std::string date, float nmbBitcoin, float value) {
+	if ((int)nmbBitcoin != nmbBitcoin)
+		std::cout << std::fixed << std::setprecision(2);
+	else
+		std::cout << std::fixed << std::setprecision(0);
+
+	std::cout << "to " << date << " for " << nmbBitcoin << " bitcoin : ";
+	std::cout << std::fixed << std::setprecision(2);
+	std::cout << nmbBitcoin * value << "$" << std::endl;
+
+	std::cout.unsetf(std::ios::fixed);
+
 }
 
 std::pair<std::string, std::string> BitcoinExchange::_split(std::string src, char c) {

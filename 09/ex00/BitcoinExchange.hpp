@@ -31,8 +31,8 @@ class BitcoinExchange {
 		std::pair<std::string, std::string> _split(std::string src, char c);
 		time_t	_getTime(std::string src);
 		float	_getFloat(std::string src);
-		void	_getValue(time_t date, int nmbBitcoin, std::string realDate); // conparer les time_t pour trouver la date la plus recente
-		void	_printValue(std::string date, int nmbBitcoin, float value);
+		void	_getValue(time_t date, float nmbBitcoin, std::string realDate); // conparer les time_t pour trouver la date la plus recente
+		void	_printValue(std::string date, float nmbBitcoin, float value);
 
 	public:
 
