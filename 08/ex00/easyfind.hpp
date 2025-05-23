@@ -14,7 +14,7 @@ void easyfind(T &tab, int target) {
 	typename T::iterator it;
 	it = std::find(tab.begin(), tab.end(), target);
 	if (it != tab.end()) {
-		std::cout << "\033[1;38;2;50;200;75mValue found in container\033[0m" << std::endl;
+		std::cout << "\033[1;38;2;50;200;75mValue found in container at position " << std::distance(tab.begin(), it) + 1 << "\033[0m" << std::endl;
 		return ;
 	}
 	throw NotFind();
