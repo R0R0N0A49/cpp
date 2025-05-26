@@ -1,4 +1,4 @@
-NAME = iter
+NAME = EasyFind
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf

@@ -1,4 +1,4 @@
-NAME = iter
+NAME = span
 SRCS = main.cpp Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
