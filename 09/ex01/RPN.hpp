@@ -5,8 +5,8 @@
 class RPN
 {
 	private:
-		std::stack<int> _nmb;
-		std::stack<char> _symb;
+		std::stack<char> _nmb;
+		std::stack<double> _res;
 
 	public:
 		RPN(std::string src);
@@ -14,13 +14,17 @@ class RPN
 		void	start();
 
 	private:
-		long _getCalculation(long first, char symb, int second);
-
+		void	_calculation(char syb);
+		void	_plus();
+		void	_minus();
+		void	_mult();
+		void	_div();
 public:
-	class Error : public std::exception
+
+	class ErrorInput : public std::exception
 	{
 		const char* what() const throw() {
-			return "Error";
+			return "Error\nBad input";
 		}
 	};
 };
